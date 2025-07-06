@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admissions - Ibun Masood High School</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --navy-blue: #003366;
+            --primary-green: #2e7d32;
+            --secondary-red: #d32f2f;
+            --accent-gold: #e8c336;
+            --light-bg: #f5f7fa;
+            --text-color: #333;
+            --white: #ffffff;
+            --success-color: #4CAF50;
+            --table-header: #1a3a5a;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.8;
+            color: var(--text-color);
+            background-color: var(--light-bg);
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--navy-blue) 0%, var(--primary-green) 100%);
+            color: var(--white);
+            padding: 20px 0;
+            border-bottom: 5px solid var(--secondary-red);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+        
+        .logo {
+            height: 80px;
+            width: 80px;
+            object-fit: contain;
+            margin-right: 20px;
+            border-radius: 50%;
+            border: 3px solid var(--white);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .school-info {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .school-name {
+            font-size: 2.2em;
+            margin: 0;
+            color: var(--white);
+            font-weight: 700;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+        }
+        
+        .school-motto {
+            font-style: italic;
+            margin: 5px 0 0;
+            color: #ffcdd2;
+            font-size: 1.1em;
+        }
+        
+        h1, h2, h3 {
+            color: var(--navy-blue);
+        }
+        
+        h1 {
+            font-size: 2.5em;
+            margin: 20px 0;
+            position: relative;
+            display: inline-block;
+        }
+        
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background-color: var(--secondary-red);
+        }
+        
+        h2 {
+            font-size: 2em;
+            margin: 40px 0 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background-color: var(--secondary-red);
+        }
+        
+        h3 {
+            font-size: 1.5em;
+            margin: 25px 0 15px;
+            color: var(--primary-green);
+        }
+        
+        p {
+            margin-bottom: 15px;
+            font-size: 1.1em;
+            line-height: 1.7;
+        }
+        
+        .admission-section {
+            background-color: var(--white);
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            margin: 30px 0;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .admission-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+        }
+        
+        .highlight-box {
+            background-color: #FFF9E6;
+            border-left: 5px solid var(--accent-gold);
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .success-box {
+            background-color: #E8F5E9;
+            border-left: 5px solid var(--success-color);
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        /* Responsive Table Styles */
+        .table-container {
+            overflow-x: auto;
+            margin: 25px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 600px;
+        }
+        
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border: 1px solid #e0e0e0;
+        }
+        
+        th {
+            background-color: var(--table-header);
+            color: white;
+            font-weight: 600;
+            position: sticky;
+            top: 0;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        
+        tr:hover {
+            background-color: #e9f7ef;
+        }
+        
+        .total-row {
+            font-weight: bold;
+            background-color: #e6f7ff;
+        }
+        
+        footer {
+            background: linear-gradient(135deg, var(--navy-blue) 0%, var(--primary-green) 100%);
+            color: var(--white);
+            text-align: center;
+            padding: 40px 0 30px;
+            margin-top: 50px;
+            border-top: 5px solid var(--secondary-red);
+            position: relative;
+        }
+        
+        footer::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: 0;
+            right: 0;
+            height: 20px;
+            background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1200 120" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"><path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" fill="%23f5f7fa" opacity=".25"/><path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" fill="%23f5f7fa" opacity=".5"/><path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" fill="%23f5f7fa"/></svg>');
+            background-size: cover;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .footer-logo {
+            height: 70px;
+            width: 70px;
+            object-fit: contain;
+            margin-bottom: 20px;
+            border-radius: 50%;
+            border: 3px solid var(--white);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            margin-top: 20px;
+            color: var(--navy-blue);
+            text-decoration: none;
+            font-weight: bold;
+            padding: 10px 20px;
+            background-color: var(--white);
+            border-radius: 30px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .back-link:hover {
+            background-color: var(--navy-blue);
+            color: var(--white);
+            transform: translateY(-3px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .back-link i {
+            margin-right: 8px;
+        }
+        
+        .contact-info {
+            background-color: #f0f7ff;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 25px 0;
+        }
+        
+        .contact-info p {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .contact-info i {
+            margin-right: 10px;
+            color: var(--primary-green);
+            width: 20px;
+            text-align: center;
+        }
+        
+        ul, ol {
+            padding-left: 25px;
+            margin-bottom: 20px;
+        }
+        
+        li {
+            margin-bottom: 10px;
+            position: relative;
+            list-style-type: none;
+            padding-left: 25px;
+        }
+        
+        li::before {
+            content: '•';
+            color: var(--secondary-red);
+            font-size: 1.5em;
+            position: absolute;
+            left: 0;
+            top: -3px;
+        }
+        
+        ol {
+            counter-reset: item;
+        }
+        
+        ol li {
+            counter-increment: item;
+            padding-left: 30px;
+        }
+        
+        ol li::before {
+            content: counter(item);
+            color: var(--white);
+            background-color: var(--primary-green);
+            font-size: 0.8em;
+            font-weight: bold;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            left: 0;
+            top: 3px;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 992px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .logo-container {
+                margin-bottom: 20px;
+                justify-content: center;
+            }
+            
+            .school-name {
+                font-size: 1.8em;
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+            
+            h2 {
+                font-size: 1.6em;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .admission-section {
+                padding: 20px;
+            }
+            
+            .logo {
+                height: 60px;
+                width: 60px;
+            }
+            
+            .footer-logo {
+                height: 60px;
+                width: 60px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .school-name {
+                font-size: 1.5em;
+            }
+            
+            h1 {
+                font-size: 1.6em;
+            }
+            
+            h2 {
+                font-size: 1.3em;
+            }
+            
+            p, li {
+                font-size: 1em;
+            }
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .animate {
+            animation: fadeIn 0.8s ease forwards;
+        }
+        
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .delay-3 { animation-delay: 0.6s; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo-container">
+                <img src="Logo.jpg" alt="Ibun Masood High School Logo" class="logo">
+                <div class="school-info">
+                    <h1 class="school-name">Ibun Masood High School</h1>
+                    <p class="school-motto">Recite in the Name of Thy Lord</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <section id="admission-process" class="animate">
+            <div class="admission-section">
+                <h2>Admission Process</h2>
+                <p>Ibun Masood High School <strong>Welcomes students of all Religious Denominations</strong> for both <strong>O-Level (S1-S4)</strong> and <strong>A-Level (S5-S6)</strong> programs. We offer day and boarding options with both secular and Islamic theology studies.</p>
+                
+                <div class="highlight-box animate delay-1">
+                    <h3>Admission Requirements</h3>
+                    <ul>
+                        <li><strong>O-Level:</strong> Primary Leaving Examination (PLE) certificate or equivalent</li>
+                        <li><strong>A-Level:</strong> Uganda Certificate of Education (UCE) with at least 5 passes</li>
+                        <li>Completed application form (available at the school office)</li>
+                        <li>Copy of birth certificate</li>
+                        <li>Recent passport-sized photographs for both Students and Parents(3,000/= fee)</li>
+                        <li>Previous school reports (if transferring)</li>
+                    </ul>
+                </div>
+
+                <h3 class="animate delay-2">Application Steps</h3>
+                <ol class="animate delay-2">
+                    <li>Collect an application form from the school office.</li>
+                    <li>Submit the completed form with required documents.</li>
+                    <li>Attend an interview/entrance assessment (if applicable).</li>
+                    <li>Receive an admission letter upon acceptance.</li>
+                    <li>Pay at least 70% of the total fees on your first day.</li>
+                    <li>Complete registration with uniform and other requirements.</li>
+                </ol>
+            </div>
+        </section>
+
+        <section id="fees-structure" class="animate">
+            <div class="admission-section">
+                <h2>Fee Structure (2025)</h2>
+                <p>All fees are in Ugandan Shillings (UGX)</p>
+                
+                <div class="table-container animate delay-1">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ITEM</th>
+                                <th>DAY BOYS</th>
+                                <th>DAY GIRLS</th>
+                                <th>BOARDING BOYS</th>
+                                <th>BOARDING GIRLS</th>
+                                <th>PAYMENT PERIOD</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Tuition Fee</td>
+                                <td>325,000/=</td>
+                                <td>325,000/=</td>
+                                <td>650,000/=</td>
+                                <td>650,000/=</td>
+                                <td>Termly</td>
+                            </tr>
+                            <tr>
+                                <td>Registration Fee</td>
+                                <td>20,000/=</td>
+                                <td>20,000/=</td>
+                                <td>20,000/=</td>
+                                <td>20,000/=</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>School Uniform</td>
+                                <td>80,000/=</td>
+                                <td>80,000/=</td>
+                                <td>80,000/=</td>
+                                <td>80,000/=</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>School Sweater</td>
+                                <td>30,000/=</td>
+                                <td>30,000/=</td>
+                                <td>30,000/=</td>
+                                <td>30,000/=</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>School T-shirt</td>
+                                <td>20,000/=</td>
+                                <td>20,000/=</td>
+                                <td>20,000/=</td>
+                                <td>20,000/=</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>Casual Wear</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>20,000/=</td>
+                                <td>30,000/=</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>Laboratory Fee</td>
+                                <td>50,000/=</td>
+                                <td>50,000/=</td>
+                                <td>50,000/=</td>
+                                <td>50,000/=</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>Sports Wear (Girls)</td>
+                                <td>-</td>
+                                <td>30,000/=</td>
+                                <td>-</td>
+                                <td>30,000/=</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>Library Fee</td>
+                                <td>50,000/=</td>
+                                <td>50,000/=</td>
+                                <td>50,000/=</td>
+                                <td>50,000/=</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>Medical Fee</td>
+                                <td>10,000/=</td>
+                                <td>10,000/=</td>
+                                <td>30,000/=</td>
+                                <td>30,000/=</td>
+                                <td>Termly</td>
+                            </tr>
+                            <tr>
+                                <td>Mosque Contribution</td>
+                                <td>3,000/=</td>
+                                <td>3,000/=</td>
+                                <td>3,000/=</td>
+                                <td>3,000/=</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>Identity Card</td>
+                                <td>12,000/=</td>
+                                <td>12,000/=</td>
+                                <td>12,000/=</td>
+                                <td>12,000/=</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>Passport Photos</td>
+                                <td>3,000/=</td>
+                                <td>3,000/=</td>
+                                <td>3,000/=</td>
+                                <td>3,000/=</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>SSESMAT Fee</td>
+                                <td>5,000/=</td>
+                                <td>5,000/=</td>
+                                <td>5,000/=</td>
+                                <td>5,000/=</td>
+                                <td>Annually</td>
+                            </tr>
+                            <tr>
+                                <td>Salon Charges</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>3,000/=</td>
+                                <td>3,000/=</td>
+                                <td>Termly</td>
+                            </tr>
+                            <tr>
+                                <td>Project Fees & Other Requirements</td>
+                                <td>60,000/=</td>
+                                <td>60,000/=</td>
+                                <td>60,000/=</td>
+                                <td>60,000/=</td>
+                                <td>-</td>
+                            </tr>
+                            <tr class="total-row">
+                                <td>TOTAL</td>
+                                <td>668,000/=</td>
+                                <td>698,000/=</td>
+                                <td>1036,000/=</td>
+                                <td>1,076,000/=</td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="success-box animate delay-2">
+                    <p><strong>Note:</strong> You must pay not less than 70% of the total indicated above on your first day.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="school-life" class="animate">
+            <div class="admission-section">
+                <h2>School Life</h2>
+                <ul>
+                    <li><strong>Term Dates:</strong> Specific dates will be provided in your admission letter</li>
+                    <li><strong>Reporting Time:</strong> Boarders must arrive before 5:00pm on opening day</li>
+                    <li><strong>Daily Schedule:</strong> Classes run from 7:00am to 5:00pm</li>
+                    <li><strong>Meals:</strong> Breakfast, Lunch & Supper are provided and compulsory for all students with meal cards.</li>
+                    <li><strong>Curriculum:</strong> Dual program with both secular and theology studies</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="contact" class="animate">
+            <div class="admission-section">
+                <h2>Contact Information</h2>
+                <div class="contact-info animate delay-1">
+                    <p><i class="fas fa-map-marker-alt"></i><strong>Address:</strong>  Kibiri, Busabala Road, Makindye-SSabagabo Municipality, Wakiso District</p>
+                    <p><i class="fas fa-envelope"></i><strong>P.O. Box: </strong>  600446, Kampala - Uganda</p>
+                    <p><i class="fas fa-phone"></i><strong>Telephone:  </strong> 0782-311464 / 0701-280699 / 0702-311464 / 0703-126828</p>
+                    <p><i class="fas fa-at"></i><strong>Email: </strong> ibunmasoodhighschool@gmail.com</p>
+                </div>
+            </div>
+        </section>
+
+        <a href="ibn.html" class="back-link animate delay-2"><i class="fas fa-arrow-left"></i> Back to Home Page</a>
+    </div>
+
+    <footer>
+        <div class="container footer-content">
+            <img src="Logo.jpg" alt="Ibun Masood High School Logo" class="footer-logo">
+            <p>&copy; 2025 Ibun Masood High School. All Rights Reserved.</p>
+            <p>Recite in the Name of Thy Lord</p>
+        </div>
+    </footer>
+
+    <script>
+        // Simple animation trigger on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const animateElements = document.querySelectorAll('.animate');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animated');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            
+            animateElements.forEach(element => {
+                observer.observe(element);
+            });
+        });
+    </script>
+</body>
+</html>

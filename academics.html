@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academic Program - Ibun Masood High School</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #1a3a5a; /* Navy Blue */
+            --secondary-color: #8B0000; /* Dark Red */
+            --accent-color: #228B22; /* Forest Green */
+            --light-bg: #f8f9fa;
+            --text-color: #333;
+            --white: #ffffff;
+            --success-color: #4CAF50;
+            --highlight-color: #FFF9C4;
+            --box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--light-bg);
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--white);
+            padding: 30px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .logo {
+            height: 100px;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 2px 5px rgba(0,0,0,0.3));
+            border-radius: 50%;
+        }
+        
+        h1 {
+            margin: 0;
+            font-size: 2.8em;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        h2 {
+            color: var(--primary-color);
+            border-bottom: 3px solid var(--accent-color);
+            padding-bottom: 8px;
+            margin-top: 40px;
+            font-size: 2em;
+        }
+        
+        h3 {
+            color: var(--secondary-color);
+            margin-top: 30px;
+            font-size: 1.5em;
+        }
+        
+        h4 {
+            color: var(--primary-color);
+            margin: 20px 0 10px;
+            font-size: 1.2em;
+        }
+        
+        .academic-section {
+            background-color: var(--white);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: var(--box-shadow);
+            margin: 40px 0;
+            transition: transform 0.3s ease;
+        }
+        
+        .academic-section:hover {
+            transform: translateY(-5px);
+        }
+        
+        .highlight-box {
+            background-color: rgba(139, 0, 0, 0.05);
+            border-left: 5px solid var(--secondary-color);
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .success-box {
+            background-color: rgba(34, 139, 34, 0.05);
+            border-left: 5px solid var(--accent-color);
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .curriculum-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin: 30px 0;
+        }
+        
+        .curriculum-card {
+            background-color: rgba(26, 58, 90, 0.03);
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            border-top: 4px solid var(--accent-color);
+        }
+        
+        .curriculum-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .subject-list {
+            columns: 2;
+            column-gap: 30px;
+            margin-top: 15px;
+        }
+        
+        .subject-list li {
+            margin-bottom: 10px;
+            break-inside: avoid;
+            position: relative;
+            padding-left: 20px;
+            list-style-type: none;
+        }
+        
+        .subject-list li:before {
+            content: "•";
+            color: var(--accent-color);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+        
+        footer {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--white);
+            text-align: center;
+            padding: 40px 0;
+            margin-top: 70px;
+            position: relative;
+        }
+        
+        .footer-logo {
+            height: 80px;
+            margin-bottom: 20px;
+            filter: brightness(0) invert(1);
+        }
+        
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            margin-top: 30px;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: bold;
+            padding: 10px 20px;
+            background-color: rgba(139, 0, 0, 0.1);
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+        
+        .back-link:hover {
+            background-color: rgba(139, 0, 0, 0.2);
+            text-decoration: none;
+            transform: translateX(-5px);
+        }
+        
+        .back-link i {
+            margin-right: 8px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        th, td {
+            border: 1px solid #ddd;
+            padding: 15px;
+            text-align: left;
+        }
+        
+        th {
+            background-color: var(--primary-color);
+            color: white;
+            font-weight: 600;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        
+        tr:hover {
+            background-color: rgba(139, 0, 0, 0.05);
+        }
+        
+        .quote {
+            font-style: italic;
+            color: var(--secondary-color);
+            border-left: 4px solid var(--accent-color);
+            padding: 20px;
+            margin: 30px 0;
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 0 8px 8px 0;
+            font-size: 1.1em;
+            position: relative;
+        }
+        
+        .quote:before {
+            content: "";
+            font-size: 4em;
+            color: rgba(139, 0, 0, 0.1);
+            position: absolute;
+            left: 10px;
+            top: 10px;
+            font-family: serif;
+            line-height: 1;
+        }
+        
+        .header-wave {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1200 120" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"><path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" fill="rgba(255,255,255,0.1)" /><path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" fill="rgba(255,255,255,0.2)" /><path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" fill="rgba(255,255,255,0.3)" /></svg>');
+            background-size: cover;
+            z-index: 1;
+        }
+        
+        .footer-wave {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1200 120" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"><path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" fill="rgba(0,0,0,0.1)" opacity=".25" /><path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" fill="rgba(0,0,0,0.1)" opacity=".5" /><path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" fill="rgba(0,0,0,0.1)" /></svg>');
+            background-size: cover;
+            transform: rotate(180deg);
+            z-index: 1;
+        }
+        
+        .footer-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .school-motto {
+            font-style: italic;
+            margin-top: 10px;
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        
+        .social-icons {
+            margin-top: 20px;
+        }
+        
+        .social-icons a {
+            color: var(--white);
+            margin: 0 10px;
+            font-size: 1.5em;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+        
+        /* Responsive Table */
+        @media screen and (max-width: 768px) {
+            table {
+                display: block;
+                overflow-x: auto;
+                white-space: nowrap;
+            }
+            
+            .subject-list {
+                columns: 1;
+            }
+            
+            .curriculum-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+            
+            h2 {
+                font-size: 1.6em;
+            }
+        }
+        
+        /* Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .academic-section, .curriculum-card, table {
+            animation: fadeIn 0.6s ease forwards;
+        }
+        
+        .academic-section:nth-child(2) { animation-delay: 0.1s; }
+        .academic-section:nth-child(3) { animation-delay: 0.2s; }
+        .academic-section:nth-child(4) { animation-delay: 0.3s; }
+        .academic-section:nth-child(5) { animation-delay: 0.4s; }
+
+        /* Curriculum section specific fixes */
+        .subject-category {
+            margin-bottom: 20px;
+            break-inside: avoid;
+        }
+
+        .curriculum-link {
+            display: inline-block;
+            margin-top: 20px;
+            color: var(--secondary-color);
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .curriculum-link:hover {
+            text-decoration: underline;
+            color: var(--primary-color);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-wave"></div>
+        <div class="container header-content">
+            <img src="Logo.jpg" alt="Ibun Masood High School Logo" class="logo">
+            <h1>Academic Program</h1>
+            <p>Ibun Masood High School - Kibiri</p>
+            <p class="school-motto"><em>Recite in the Name of Thy Lord</em></p>
+        </div>
+    </header>
+
+    <div class="container">
+        <section id="academic-overview">
+            <div class="academic-section">
+                <h2>Academic Excellence</h2>
+                <p>At Ibun Masood High School, we are committed to providing a high quality and intellectually challenging educational environment that enables every student to reach their full potential.</p>
+                
+                <div class="highlight-box">
+                    <h3>Our Educational Philosophy</h3>
+                    <ul class="subject-list">
+                        <li>A belief that everybody has the potential to succeed</li>
+                        <li>A commitment to instilling high aspirations and a desire to learn</li>
+                        <li>A personalized approach to securing excellence</li>
+                        <li>A passionate belief that each individual is unique and capable of rising above perceived limitations</li>
+                    </ul>
+                </div>
+                
+                <div class="success-box">
+                    <h3>Our Achievements</h3>
+                    <ul class="subject-list">
+                        <li>Steady growth in student population each year</li>
+                        <li>Fully installed IT and science laboratories</li>
+                        <li>Secured "O" and "A" level UNEB examination centers</li>
+                        <li>Consistent improvement in national examination results</li>
+                        <li>Theology students ranking second nationally in Sabia'a and Thalitha Idaad examinations for three consecutive years</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="curriculum">
+            <div class="academic-section">
+                <h2>Curriculum Structure</h2>
+                <p>Ibun Masood High School offers a comprehensive dual curriculum combining secular education with Islamic theology studies (for Muslim students).</p>
+                
+                <div class="curriculum-grid">
+                    <div class="curriculum-card">
+                        <div class="subject-list">
+                            <div class="subject-category">
+                                <h4>Science Subjects:</h4>
+                                <ul>
+                                    <li>Mathematics</li>
+                                    <li>Physics</li>
+                                    <li>Chemistry</li>
+                                    <li>Biology</li>
+                                    <li>Physical Education</li>
+                                    <li>Foods & Nutrition</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="subject-category">
+                                <h4>Language Subjects:</h4>
+                                <ul>
+                                    <li>English</li>
+                                    <li>Luganda</li>
+                                    <li>Arabic</li>
+                                    <li>Swahili</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="curriculum-card">
+                        <div class="subject-list">
+                            <div class="subject-category">
+                                <h4>Humanities Subjects:</h4>
+                                <ul>
+                                    <li>History & Political Education</li>
+                                    <li>Islamic Religious Education (IRE)</li>
+                                    <li>Geography</li>
+                                    <li>Christian Religious Education (CRE)</li>
+                                </ul>
+                            </div>
+
+                            <div class="subject-category">
+                                <h4>Vocational Subjects:</h4>
+                                <ul>
+                                    <li>Entrepreneurship</li>
+                                    <li>Art and Design</li>
+                                    <li>Information & Communication Technology (ICT)</li>
+                                    <li>Agriculture</li>
+                                    <li>Economics</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <h3>Theology Program</h3>
+                <p>Our unique theology program ranges from beginner to advanced levels:</p>
+                <ul class="subject-list">
+                    <li><strong>Beginner Classes:</strong> Shuba Aalifu and Shuba Ba for introduction to Islamic studies</li>
+                    <li><strong>Intermediate Levels:</strong> Sabia'a and Thalitha Idaad</li>
+                    <li><strong>Advanced Level:</strong> Thanawi Class (senior theology class)</li>
+                </ul>
+                <p>The school has acquired center numbers for national theology examinations at all levels.</p>
+                
+                <a href="curriculum.html" class="curriculum-link">For full Subjects Details, please refer to our Comprehensive Curriculum Page →</a>
+            </div>
+        </section>
+
+        <section id="academic-facilities">
+            <div class="academic-section">
+                <h2>Academic Facilities</h2>
+                <div class="highlight-box">
+                    <h3>State-of-the-Art Learning Resources</h3>
+                    <ul class="subject-list">
+                        <li>Fully equipped science laboratories</li>
+                        <li>Modern computer laboratory with over 50 state-of-the-art computers (all with LCD monitors)</li>
+                        <li>School-wide WiFi internet access</li>
+                        <li>Well-stocked resource center</li>
+                        <li>Specialized classrooms for different subjects</li>
+                    </ul>
+                </div>
+                
+                <h3>ICT Integration</h3>
+                <p>ICT and Computer Studies are the most popular elective subjects at the school, with over 50% of students enrolled. The department has grown from serving 8 students in 2012 to over 300 students currently at both "O" and "A" levels.</p>
+                
+                <div class="quote">
+                    "The number one benefit of information technology is that it empowers people to do what they want to do. It lets people be creative. It lets people be productive. It lets people learn things they didn't think they could learn before, and so in a sense it's all about potential." — Steve Ballmer
+                </div>
+            </div>
+        </section>
+
+        <section id="academic-support">
+            <div class="academic-section">
+                <h2>Academic Support Systems</h2>
+                
+                <h3>Teaching Approach</h3>
+                <p>Our teachers are trained to:</p>
+                <ul class="subject-list">
+                    <li>Set high expectations for all students</li>
+                    <li>Create a sense of community and belonging in the classroom</li>
+                    <li>Be warm, accessible, enthusiastic and caring</li>
+                    <li>Inspire students with their passion for education</li>
+                    <li>Collaborate with colleagues to improve teaching methods</li>
+                    <li>Adapt lessons when needed to ensure understanding</li>
+                </ul>
+                
+                <h3>Student Success Strategies</h3>
+                <table>
+                    <tr>
+                        <th>Strategy</th>
+                        <th>Description</th>
+                    </tr>
+                    <tr>
+                        <td>Study Habits</td>
+                        <td>Create a good study space with little distraction, stick to a study schedule, do difficult homework when mentally fresh</td>
+                    </tr>
+                    <tr>
+                        <td>Exam Techniques</td>
+                        <td>Prepare well to feel relaxed, read the whole test first, outline essay answers, answer known questions first</td>
+                    </tr>
+                    <tr>
+                        <td>Time Management</td>
+                        <td>Have a personal timetable to track assignments and revision programs</td>
+                    </tr>
+                    <tr>
+                        <td>Class Participation</td>
+                        <td>Ask questions when unsure, pay attention in class, take notes, concentrate on what is being said</td>
+                    </tr>
+                </table>
+                
+                <h3>Academic Departments</h3>
+                <p>The school has specialized departments to ensure focused academic delivery:</p>
+                <ul class="subject-list">
+                    <li>Science Department</li>
+                    <li>Language Department</li>
+                    <li>Business Department</li>
+                    <li>Humanities Department</li>
+                    <li>Fine Art Department</li>
+                    <li>ICT Department</li>
+                    <li>Theology Department</li>
+                    <li>Vocational & Projects Department</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="academic-culture">
+            <div class="academic-section">
+                <h2>Academic Culture</h2>
+                
+                <h3>Expectations for Students</h3>
+                <ul class="subject-list">
+                    <li>Develop passion, perseverance, analytical skills, time-consciousness, and responsibility</li>
+                    <li>Utilize time and school fees effectively</li>
+                    <li>Maintain good character and leave a good record</li>
+                    <li>Remember: "If you fail to prepare your way to success, you successfully prepare your way to fail"</li>
+                </ul>
+                
+                <div class="success-box">
+                    <h3>Path to Success</h3>
+                    <p>"Success is no accident. It is hard work, perseverance, learning, studying sacrifice, and most all love of what you are doing. If it doesn't challenge you, it won't change you. The harder I work, the luckier I get. No matter how you feel, get up, dress up and never give up."</p>
+                </div>
+                
+                <h3>Academic Clubs</h3>
+                <p>To supplement classroom learning, the school offers various academic clubs:</p>
+                <ul class="subject-list">
+                    <li>Writers' Club</li>
+                    <li>Debate Club</li>
+                    <li>ICT Club</li>
+                    <li>Science Club</li>
+                    <li>Patriotism Club</li>
+                    <li>Humanities Club</li>
+                    <li>Red Cross Club</li>
+                </ul>
+            </div>
+        </section>
+
+        <a href="ibn.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Home Page</a>
+    </div>
+
+    <footer>
+        <div class="footer-wave"></div>
+        <div class="container footer-content">
+            <p>&copy; 2023 Ibun Masood High School. All Rights Reserved.</p>
+            <p class="school-motto">Recite in the Name of Thy Lord</p>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="https://x.com/ibunmasood?t=5mBEtqOb_RPjPAaPXvfieA&s=09"><i class="fab fa-twitter"></i></a>
+                <a href="https://wa.me/703126828"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://www.tiktok.com/@ibunmasoodhighschool"><i class="fab fa-tiktok"></i></a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

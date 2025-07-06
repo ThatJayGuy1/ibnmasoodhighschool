@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academic Calendar - IBUN MASOOD HIGH SCHOOL</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css">
+    <style>
+        :root {
+            --primary-red: #c62828;
+            --primary-green: #2e7d32;
+            --light-blue: #4fc3f7;
+            --gray: #757575;
+            --light-gray: #f5f5f5;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light-gray);
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary-red), var(--primary-green));
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            animation: fadeInLeft 1s ease;
+        }
+        
+        .logo-text {
+            margin-left: 1rem;
+        }
+        
+        .logo-text h1 {
+            font-size: 1.8rem;
+            margin-bottom: 0.2rem;
+            font-weight: 700;
+        }
+        
+        .logo-text p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        .header-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjA1KSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNwYXR0ZXJuKSIvPjwvc3ZnPg==');
+            opacity: 0.3;
+            z-index: 1;
+        }
+        
+        /* Banner Styles */
+        .banner {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('O & A LEVEL.jpg') no-repeat center center;
+            background-size: cover;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+        
+        .banner-content {
+            max-width: 800px;
+            padding: 2rem;
+            background-color: rgba(0, 0, 0, 0.6);
+            border-radius: 8px;
+        }
+        
+        .banner h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+        
+        .banner p {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Main Content Styles */
+        .main-container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+            animation: fadeIn 0.8s ease;
+        }
+        
+        .page-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--primary-red);
+            position: relative;
+            padding-bottom: 1rem;
+        }
+        
+        .page-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-red), var(--primary-green));
+            border-radius: 2px;
+        }
+        
+        /* Calendar Styles */
+        #calendar-container {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 2rem;
+        }
+        
+        #calendar {
+            margin: 0 auto;
+            max-width: 1100px;
+        }
+        
+        .fc-event {
+            cursor: pointer;
+        }
+        
+        /* Term Info Styles */
+        .term-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .term-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-top: 5px solid var(--primary-green);
+        }
+        
+        .term-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .term-card h3 {
+            color: var(--primary-green);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .term-card.current {
+            border-top: 5px solid var(--primary-red);
+        }
+        
+        .term-card.current h3 {
+            color: var(--primary-red);
+        }
+        
+        .term-dates {
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+        
+        .term-events {
+            list-style-type: none;
+        }
+        
+        .term-events li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        
+        .term-events li:before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--primary-green);
+            font-weight: bold;
+        }
+        
+        .current .term-events li:before {
+            color: var(--primary-red);
+        }
+        
+        /* Admin Controls */
+        .admin-controls {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 2rem;
+            display: none;
+        }
+        
+        .admin-controls h3 {
+            color: var(--primary-red);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--gray);
+            font-weight: 500;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--light-blue);
+            box-shadow: 0 0 0 3px rgba(79, 195, 247, 0.2);
+        }
+        
+        .btn {
+            background: linear-gradient(135deg, var(--primary-red), var(--primary-green));
+            color: white;
+            border: none;
+            padding: 0.8rem 2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: inline-block;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Footer Styles */
+        footer {
+            background: linear-gradient(135deg, var(--primary-green), var(--primary-red));
+            color: white;
+            padding: 3rem 0 1rem;
+            position: relative;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .footer-logo {
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-logo h2 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-logo p {
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+        
+        .footer-links h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .footer-links h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background-color: var(--light-blue);
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            display: inline-block;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            transform: translateX(5px);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background: white;
+            color: var(--primary-red);
+            transform: translateY(-3px);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .footer-bottom p {
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes fadeInLeft {
+            from { 
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 100;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
+        }
+        
+        .modal-content {
+            background-color: #fefefe;
+            margin: 10% auto;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            width: 80%;
+            max-width: 500px;
+            animation: fadeIn 0.3s ease;
+            position: relative;
+        }
+        
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            position: absolute;
+            right: 20px;
+            top: 10px;
+        }
+        
+        .close:hover {
+            color: black;
+        }
+        
+        /* Password Modal Specific Styles */
+        .password-form {
+            margin-top: 1.5rem;
+        }
+        
+        .password-form .form-group {
+            margin-bottom: 1rem;
+        }
+        
+        .password-form .btn {
+            width: 100%;
+            margin-top: 1rem;
+        }
+        
+        .error-message {
+            color: #c62828;
+            margin-top: 1rem;
+            text-align: center;
+            display: none;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .logo {
+                margin-bottom: 1rem;
+                justify-content: center;
+            }
+            
+            .banner h2 {
+                font-size: 2rem;
+            }
+            
+            .banner p {
+                font-size: 1rem;
+            }
+            
+            .term-info {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .footer-links h3:after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            
+            .social-links {
+                justify-content: center;
+            }
+            
+            .modal-content {
+                width: 90%;
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="header-bg"></div>
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-school" style="font-size: 2.5rem; color: white;"></i>
+                </div>
+                <div class="logo-text">
+                    <h1>Academic Calendar</h1>
+                    <p>IBUN MASOOD HIGH SCHOOL</p>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Main Content Section -->
+    <div class="main-container">
+        <h1 class="page-title">Academic Calendar 2025</h1>
+        
+        <!-- Term Information Cards -->
+        <div class="term-info">
+            <div class="term-card">
+                <h3>First Term</h3>
+                <div class="term-dates">February 3 - April 25, 2025</div>
+                <ul class="term-events">
+                    <li>Term begins: February 3</li>
+                    <li>Mid-term break: March 10-14</li>
+                    <li>Parent-teacher meetings: March 28</li>
+                    <li>End of term exams: April 14-18</li>
+                    <li>Term ends: April 25</li>
+                </ul>
+            </div>
+            
+            <div class="term-card current">
+                <h3>Second Term (Current)</h3>
+                <div class="term-dates">May 18 - August 13, 2025</div>
+                <ul class="term-events">
+                    <li>Term begins: May 18</li>
+                    <li>Mid-term break: June 23-27</li>
+                    <li>Sports day: July 11</li>
+                    <li>End of term exams: July 28 - August 1</li>
+                    <li>Term ends: August 13</li>
+                </ul>
+            </div>
+            
+            <div class="term-card">
+                <h3>Third Term</h3>
+                <div class="term-dates">September 8 - November 28, 2025</div>
+                <ul class="term-events">
+                    <li>Term begins: September 8</li>
+                    <li>Mid-term break: October 13-17</li>
+                    <li>UNEB exams begin: October 20</li>
+                    <li>Closing ceremony: November 21</li>
+                    <li>Term ends: November 28</li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Calendar Container -->
+        <div id="calendar-container">
+            <div id="calendar"></div>
+        </div>
+        
+        <!-- Admin Controls (Hidden by default) -->
+        <div class="admin-controls" id="adminControls">
+            <h3>Admin Event Management</h3>
+            <form id="eventForm">
+                <div class="form-group">
+                    <label for="eventTitle">Event Title</label>
+                    <input type="text" id="eventTitle" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="eventDate">Date</label>
+                    <input type="date" id="eventDate" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="eventDescription">Description (Optional)</label>
+                    <textarea id="eventDescription" class="form-control" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="eventColor">Color</label>
+                    <input type="color" id="eventColor" class="form-control" value="#2e7d32">
+                </div>
+                <button type="submit" class="btn">Add Event</button>
+                <button type="button" id="clearEvents" class="btn" style="background: var(--gray); margin-left: 1rem;">Clear All Events</button>
+                <button type="button" id="logoutAdmin" class="btn" style="background: var(--primary-red); margin-left: 1rem;">Logout</button>
+            </form>
+        </div>
+        
+        <!-- Admin Login Button -->
+        <button id="adminToggle" class="btn" style="display: block; margin: 0 auto 2rem; background: var(--gray);">Admin Login</button>
+    </div>
+    
+    <!-- Footer Section -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-about">
+                <div class="footer-logo">
+                    <h2>IBUN MASOOD HIGH SCHOOL</h2>
+                    <p>Providing quality education for both secular and theological studies</p>
+                </div>
+                <p>Our institution is committed to excellence in education, nurturing students for both academic and spiritual growth.</p>
+                <div class="social-links">
+                    <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="https://me.whatsapp.com" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://tiktok.com" target="_blank"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="ibn.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+                    <li><a href="About.html"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                    <li><a href="academics.html"><i class="fas fa-chevron-right"></i> Academics</a></li>
+                    <li><a href="Admission.html"><i class="fas fa-chevron-right"></i> Admissions</a></li>
+                    <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h3>Contact Info</h3>
+                <ul>
+                    <li><i class="fas fa-map-marker-alt"></i> KIBIRI - BUSAABALA ROAD</li>
+                    <li><i class="fas fa-phone-alt"></i> 0782 311 464 / 0702 311 464 / 0703 126 828 / 0701 280 699</li>
+                    <li><i class="fas fa-envelope"></i> ibnmasoodhighschool@gmail.com</li>
+                    <li><i class="fas fa-clock"></i> Mon-Fri: 7:00AM - 5:00PM</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2025 IBUN MASOOD HIGH SCHOOL. All Rights Reserved.</p>
+        </div>
+    </footer>
+    
+    <!-- Event Modal -->
+    <div id="eventModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="modalTitle"></h2>
+            <p id="modalDate"></p>
+            <p id="modalDescription"></p>
+            <button id="setReminder" class="btn">Set Reminder</button>
+        </div>
+    </div>
+    
+    <!-- Password Modal -->
+    <div id="passwordModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Admin Login</h2>
+            <p>Please enter the admin password to continue:</p>
+            <form class="password-form" id="passwordForm">
+                <div class="form-group">
+                    <input type="password" id="adminPassword" class="form-control" placeholder="Enter password" required>
+                </div>
+                <button type="submit" class="btn">Submit</button>
+                <div class="error-message" id="passwordError">Incorrect password. Please try again.</div>
+            </form>
+        </div>
+    </div>
+    
+    <!-- JavaScript Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set the admin password to "ibn442"
+            const ADMIN_PASSWORD = "ibn442"; // Password changed as requested
+            
+            // Initialize calendar
+            const calendarEl = document.getElementById('calendar');
+            const calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                headerToolbar: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'dayGridMonth,timeGridWeek,timeGridDay'
+                },
+                events: [
+                    // First Term Events
+                    {
+                        title: 'First Term Begins',
+                        start: '2025-02-03',
+                        end: '2025-02-03',
+                        color: '#c62828',
+                        description: 'First day of school for the academic year',
+                        preset: true
+                    },
+                    {
+                        title: 'Mid-term Break',
+                        start: '2025-03-10',
+                        end: '2025-03-14',
+                        color: '#4fc3f7',
+                        description: 'Students return home for mid-term break',
+                        preset: true
+                    },
+                    {
+                        title: 'Parent-Teacher Meetings',
+                        start: '2025-03-28',
+                        end: '2025-03-28',
+                        color: '#2e7d32',
+                        description: 'Parents invited to discuss student progress',
+                        preset: true
+                    },
+                    {
+                        title: 'End of Term Exams',
+                        start: '2025-04-14',
+                        end: '2025-04-18',
+                        color: '#757575',
+                        description: 'First term examinations',
+                        preset: true
+                    },
+                    {
+                        title: 'First Term Ends',
+                        start: '2025-04-25',
+                        end: '2025-04-25',
+                        color: '#c62828',
+                        description: 'Students break for holidays',
+                        preset: true
+                    },
+                    
+                    // Second Term Events (Current Term)
+                    {
+                        title: 'Second Term Begins',
+                        start: '2025-05-18',
+                        end: '2025-05-18',
+                        color: '#c62828',
+                        description: 'Students return for second term',
+                        preset: true
+                    },
+                    {
+                        title: 'Mid-term Break',
+                        start: '2025-06-23',
+                        end: '2025-06-27',
+                        color: '#4fc3f7',
+                        description: 'Students return home for mid-term break',
+                        preset: true
+                    },
+                    {
+                        title: 'Sports Day',
+                        start: '2025-07-11',
+                        end: '2025-07-11',
+                        color: '#2e7d32',
+                        description: 'Annual inter-house sports competition',
+                        preset: true
+                    },
+                    {
+                        title: 'End of Term Exams',
+                        start: '2025-07-28',
+                        end: '2025-08-01',
+                        color: '#757575',
+                        description: 'Second term examinations',
+                        preset: true
+                    },
+                    {
+                        title: 'Second Term Ends',
+                        start: '2025-08-13',
+                        end: '2025-08-13',
+                        color: '#c62828',
+                        description: 'Students break for holidays',
+                        preset: true
+                    },
+                    
+                    // Third Term Events
+                    {
+                        title: 'Third Term Begins',
+                        start: '2025-09-08',
+                        end: '2025-09-08',
+                        color: '#c62828',
+                        description: 'Students return for final term',
+                        preset: true
+                    },
+                    {
+                        title: 'Mid-term Break',
+                        start: '2025-10-13',
+                        end: '2025-10-17',
+                        color: '#4fc3f7',
+                        description: 'Students return home for mid-term break',
+                        preset: true
+                    },
+                    {
+                        title: 'UNEB Exams Begin',
+                        start: '2025-10-20',
+                        end: '2025-10-20',
+                        color: '#2e7d32',
+                        description: 'National examinations begin',
+                        preset: true
+                    },
+                    {
+                        title: 'Closing Ceremony',
+                        start: '2025-11-21',
+                        end: '2025-11-21',
+                        color: '#2e7d32',
+                        description: 'Annual prize-giving day',
+                        preset: true
+                    },
+                    {
+                        title: 'Third Term Ends',
+                        start: '2025-11-28',
+                        end: '2025-11-28',
+                        color: '#c62828',
+                        description: 'End of academic year',
+                        preset: true
+                    }
+                ],
+                eventClick: function(info) {
+                    document.getElementById('modalTitle').textContent = info.event.title;
+                    document.getElementById('modalDate').textContent = info.event.start.toLocaleDateString();
+                    document.getElementById('modalDescription').textContent = info.event.extendedProps.description || 'No additional details';
+                    
+                    const modal = document.getElementById('eventModal');
+                    modal.style.display = 'block';
+                    
+                    // Set reminder functionality
+                    document.getElementById('setReminder').onclick = function() {
+                        const eventDate = info.event.start;
+                        const now = new Date();
+                        const timeDiff = eventDate - now;
+                        const daysDiff = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
+                        
+                        if (daysDiff > 0) {
+                            alert(`Reminder set for "${info.event.title}" in ${daysDiff} days (${eventDate.toDateString()})`);
+                        } else {
+                            alert(`"${info.event.title}" is today!`);
+                        }
+                        modal.style.display = 'none';
+                    };
+                }
+            });
+            
+            calendar.render();
+            
+            // Modal close buttons
+            document.querySelectorAll('.close').forEach(closeBtn => {
+                closeBtn.onclick = function() {
+                    this.closest('.modal').style.display = 'none';
+                    document.getElementById('passwordError').style.display = 'none';
+                };
+            });
+            
+            // Close modals when clicking outside
+            window.onclick = function(event) {
+                if (event.target.classList.contains('modal')) {
+                    event.target.style.display = 'none';
+                    document.getElementById('passwordError').style.display = 'none';
+                }
+            };
+            
+            // Admin password functionality
+            const adminToggle = document.getElementById('adminToggle');
+            const adminControls = document.getElementById('adminControls');
+            const passwordModal = document.getElementById('passwordModal');
+            const passwordForm = document.getElementById('passwordForm');
+            const passwordError = document.getElementById('passwordError');
+            const logoutAdmin = document.getElementById('logoutAdmin');
+            
+            let adminMode = false;
+            
+            adminToggle.addEventListener('click', function() {
+                if (!adminMode) {
+                    passwordModal.style.display = 'block';
+                } else {
+                    adminMode = false;
+                    adminControls.style.display = 'none';
+                    adminToggle.textContent = 'Admin Login';
+                    adminToggle.style.background = '#757575';
+                }
+            });
+            
+            passwordForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const enteredPassword = document.getElementById('adminPassword').value;
+                
+                if (enteredPassword === ADMIN_PASSWORD) {
+                    adminMode = true;
+                    adminControls.style.display = 'block';
+                    adminToggle.textContent = 'Exit Admin Mode';
+                    adminToggle.style.background = '#c62828';
+                    passwordModal.style.display = 'none';
+                    document.getElementById('adminPassword').value = '';
+                    passwordError.style.display = 'none';
+                } else {
+                    passwordError.style.display = 'block';
+                }
+            });
+            
+            logoutAdmin.addEventListener('click', function() {
+                adminMode = false;
+                adminControls.style.display = 'none';
+                adminToggle.textContent = 'Admin Login';
+                adminToggle.style.background = '#757575';
+            });
+            
+            // Add event form
+            const eventForm = document.getElementById('eventForm');
+            eventForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const title = document.getElementById('eventTitle').value;
+                const date = document.getElementById('eventDate').value;
+                const description = document.getElementById('eventDescription').value;
+                const color = document.getElementById('eventColor').value;
+                
+                if (title && date) {
+                    calendar.addEvent({
+                        title: title,
+                        start: date,
+                        allDay: true,
+                        color: color,
+                        description: description
+                    });
+                    
+                    alert('Event added successfully!');
+                    eventForm.reset();
+                }
+            });
+            
+            // Clear all events button (only non-preset events)
+            document.getElementById('clearEvents').addEventListener('click', function() {
+                if (confirm('Are you sure you want to remove all custom events?')) {
+                    calendar.getEvents().forEach(event => {
+                        if (!event.extendedProps.preset) {
+                            event.remove();
+                        }
+                    });
+                    alert('All custom events have been removed.');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

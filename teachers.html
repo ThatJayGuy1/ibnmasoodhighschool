@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teaching Staff - Ibun Masood High School</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-red: #f1060e;
+            --primary-green: #2e8b57;
+            --primary-blue: #d9deeb;
+            --primary-gray: #170a46;
+            --light-gray: #d1d2d3;
+            --white: #ffffff;
+            --text-dark: #333333;
+            --text-light: #2c74bd;
+            --transition: all 0.3s ease-in-out;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.7;
+            color: var(--text-dark);
+            background-color: var(--light-gray);
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary-red), var(--primary-gray));
+            color: var(--white);
+            padding: 15px 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo-placeholder {
+            width: 60px;
+            height: 60px;
+            background-color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .logo-placeholder i {
+            font-size: 30px;
+            color: var(--primary-red);
+        }
+        
+        .school-info h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        
+        .school-info p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover;
+            color: var(--white);
+            padding: 100px 0;
+            text-align: center;
+            position: relative;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: linear-gradient(transparent, var(--light-gray));
+        }
+        
+        .hero h2 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            animation: fadeInDown 1s ease;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            animation: fadeInUp 1s ease 0.3s both;
+        }
+        
+        /* Main Content */
+        .main-content {
+            padding: 60px 0;
+        }
+        
+        .section-intro {
+            text-align: center;
+            margin-bottom: 60px;
+            animation: fadeIn 1s ease;
+        }
+        
+        .section-intro h2 {
+            font-size: 2.5rem;
+            color: var(--primary-red);
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-intro h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--primary-green);
+            border-radius: 2px;
+        }
+        
+        .section-intro p {
+            font-size: 1.1rem;
+            color: var(--primary-gray);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        /* Department Cards */
+        .department {
+            background-color: var(--white);
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(204, 68, 68, 0.08);
+            margin-bottom: 40px;
+            transition: var(--transition);
+            border-left: 6px solid;
+            transform: translateY(20px);
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards;
+        }
+        
+        .department:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+        }
+        
+        .department.science {
+            border-left-color: var(--primary-green);
+            animation-delay: 0.1s;
+        }
+        
+        .department.history {
+            border-left-color: #FF5722;
+            animation-delay: 0.4s;
+            color: #c1272d;
+        }
+          
+        .department.theology {
+            border-left-color: #3F51B5;
+            animation-delay: 0.8s;
+        }
+        
+        .department-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            color:red;
+        }
+        
+        .department-title {
+            font-size: 1.8rem;
+            color: var( blue);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .department-icon {
+            font-size: 28px;
+        }
+        
+        .science .department-icon { color: var(--primary-green); }
+        .history .department-icon { color: #FF5722; }
+        .theology .department-icon { color: #3F51B5; }
+        
+        .teachers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 25px;
+        }
+        
+        .teacher-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+            border-top: 3px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .teacher-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            border-top-color: var(--primary-red);
+        }
+        
+        .teacher-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-red), var(--primary-blue));
+            opacity: 0;
+            transition: var(--transition);
+        }
+        
+        .teacher-card:hover::before {
+            opacity: 1;
+        }
+        
+        .teacher-name {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--primary-gray);
+            margin-bottom: 15px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .teacher-name::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--primary-green);
+        }
+
+
+        
+        /* Back Link */
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 40px;
+            padding: 12px 25px;
+            background-color: var(--primary-red);
+            color:black;
+            text-decoration: none;
+            border-radius:50px;
+            font-weight: 500;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(169, 19, 24, 0.3);
+            
+        }
+        
+        .back-link:hover {
+            background-color: var(--primary-gray);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(74, 74, 74, 0.3);
+        }
+        
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--primary-gray), var(--text-dark));
+            color: var(--white);
+            padding: 60px 0 30px;
+            position: relative;
+        }
+        
+        .footer-wave {
+            position: absolute;
+            top: -100px;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1200 120" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"><path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" fill="%23f5f5f5" opacity=".25"/><path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" fill="%23f5f5f5" opacity=".5"/><path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" fill="%23f5f5f5"/></svg>') no-repeat;
+            background-size: cover;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+        
+        .footer-logo {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        
+        .footer-logo-placeholder {
+            width: 80px;
+            height: 80px;
+            background-color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+        
+        .footer-logo-placeholder i {
+            font-size: 40px;
+            color: var(--primary-red);
+        }
+        
+        .footer-logo p {
+            margin-top: 15px;
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+        
+        .footer-links h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-links h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background-color: var(--primary-red);
+        }
+        
+        .footer-links ul {
+            list-style-type: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: var(--white);
+            text-decoration: none;
+            opacity: 0.8;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .footer-links a:hover {
+            opacity: 1;
+            transform: translateX(5px);
+        }
+        
+        .footer-links a i {
+            font-size: 12px;
+        }
+        
+        .footer-contact .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .footer-contact .contact-item i {
+            font-size: 18px;
+            color: var(--primary-red);
+            margin-top: 3px;
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 992px) {
+            .hero h2 {
+                font-size: 2.8rem;
+            }
+            
+            .department-title {
+                font-size: 1.5rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+            
+            .hero h2 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .section-intro h2 {
+                font-size: 2rem;
+            }
+            
+            .teachers-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .department-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero {
+                padding: 80px 0;
+            }
+            
+            .hero h2 {
+                font-size: 1.8rem;
+            }
+            
+            .section-intro h2 {
+                font-size: 1.6rem;
+            }
+            
+            .department {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with Logo -->
+    <header>
+        <div class="container header-container">
+            <div class="logo-container">
+                <div class="logo-placeholder">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <div class="school-info">
+                    <h1>Ibun Masood High School</h1>
+                    <p>Kibiri - Recite in the Name of Thy Lord</p>
+                </div>
+            </div>
+            <nav>
+                <!-- Navigation would go here -->
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h2>Our Distinguished Teaching Staff</h2>
+            <p>At Ibun Masood High School, we pride ourselves on having a team of professional, committed teachers who are experts in their respective fields.</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <section id="teaching-staff">
+                <div class="section-intro">
+                    <h2>Meet Our Educators</h2>
+                    <p>Dedicated professionals shaping the minds of tomorrow through knowledge, compassion, and Islamic values.</p>
+                </div>
+
+                <!-- Science Department -->
+                <div class="department science">
+                    <div class="department-header">
+                        <h3 class="department-title">
+                            <i class="fas fa-flask department-icon"></i>
+                            Science Department
+                        </h3>
+                    </div>
+                    <div class="teachers-grid">
+                        <div class="teacher-card">
+                            <p class="teacher-name">Mr. Edward Lukanga</p> 
+                        </div>
+                        <div class="teacher-card">
+                            <p class="teacher-name">Mr. Kaaya Ibrahim</p>
+                        </div>
+                        <div class="teacher-card">
+                            <p class="teacher-name">Mr. Lukoya Isaac</p>
+                        </div>
+                        <div class="teacher-card">
+                            <p class="teacher-name">Mr. Nkubito Amfrey</p>
+                        </div><div class="teacher-card">
+                            <p class="teacher-name">Mr. Ndyasiima Tadeo</p>
+                        </div>
+                        <div class="teacher-card">
+                            <p class="teacher-name">Mr. Matovu Ismael</p>
+                        </div>
+                        <div class="teacher-card">
+                            <p class="teacher-name">Mr. Namaoyo Sam</p>
+                        </div>
+                        <div class="teacher-card">
+                            <p class="teacher-name">Mr. Twesigye Darawusi</p>
+                        </div>
+                        <div class="teacher-card">
+                            <p class="teacher-name">Mr. Nambadala Ayub</p>
+                        </div>
+                        <div class="teacher-card">
+                            <p class="teacher-name">Mr. Mayanja Faisal</p>
+                        </div>
+                        <div class="teacher-card">
+                            <p class="teacher-name">Mr. Tumutegerize Gonehasa</p>
+                        </div>
+                         <div class="teacher-card">
+                            <p class="teacher-name">Mr. Kakooza Hussein</p>
+                        </div>
+                          <div class="teacher-card">
+                            <p class="teacher-name">Mr. Odiga Mahmoud</p>
+                        </div>
+                          <div class="teacher-card">
+                            <p class="teacher-name">Mr. Wakisa Hassan</p>
+                        </div>
+                        <div class="teacher-card">
+                            <p class="teacher-name">Ms. Nassanga Rashidah</p>
+                        </div>
+                        <div class="teachers-grid">
+                        <div class="teacher-card">
+                            <p class="teacher-name">Mr. Kabanda Falish</p>
+                        </div>   
+                    </div>
+                </div>
+
+                <!-- History & Religious Education Department -->
+                <div class="department history">
+                    <div class="department-header">
+                        <h3 class="department-title">
+                            <i class="fas fa-landmark department-icon"></i>
+                            Humanities, Vocational & Languages Department
+                        </h3>
+                    </div>
+                    <div class="teachers-grid">
+                        <div class="teacher-card">
+                            <p class="teacher-name">Ms. Hadija Namyalo</p>
+                        </div>
+                        <div class="teacher-card">
+                            <p class="teacher-name">Mr. Kasekende Abbas</p>
+                        </div>
+                        <div class="teacher-card">
+                            <p class="teacher-name">Mr. Sserusa Mansoor</p>
+                        </div>
+                        <div class="teacher-card">
+                            <p class="teacher-name">Mr. Abdulraham Busulwa</p>
+                        </div>
+                          <div class="teacher-card">
+                            <p class="teacher-name">Mr. Lusiba Mike</p>
+                        </div>
+                        <div class="teacher-card">
+                            <p class="teacher-name">Mr. Ssemombwe Ibrahim</p>
+                        </div>
+                        <div class="teacher-card">
+                            <p class="teacher-name">Mr. Sselunjoji Fred</p>
+                        </div>
+                        <div class="teacher-card">
+                            <p class="teacher-name">Mr. Talikwa Brian</p>
+                        </div>
+                        <div class="teacher-card">
+                            <p class="teacher-name">Mr. Mutebi Harman</p>
+                        </div>
+                        <div class="teacher-card">
+                            <p class="teacher-name">Ms. Wanyana Juliet</p>
+                        </div>
+                        <div class="teacher-card">
+                            <p class="teacher-name">Mr. Murabi Nasif</p>
+                        </div>
+                        <div class="teacher-card">
+                            <p class="teacher-name">Ms. Kebirunji Rhena Natasha</p>
+                        </div>
+                        <div class="teacher-card">
+                            <p class="teacher-name">Mr. Sseninde Faisal</p>
+                        </div>
+                        <div class="teacher-card">
+                            <p class="teacher-name">Mr. Kavuma Isaac</p>
+                        </div>
+                        <div class="teacher-card">
+                            <p class="teacher-name">Mr. Kaggwa Eric</p>
+                        </div>
+                        <div class="teacher-card">
+                            <p class="teacher-name">Mr. Kiyini Umar</p>
+                        </div>
+                        <div class="teacher-card">
+                            <p class="teacher-name">Mr. Nyehangane Martin</p>
+                        </div>
+                        <div class="teacher-card">
+                            <p class="teacher-name">Mr. Kisakye Mariam</p>
+                        </div>
+                        <div class="teacher-card">
+                            <p class="teacher-name">Mr. Namuddu Hanat</p>
+                        </div>
+                        <div class="teacher-card">
+                            <p class="teacher-name">Mr. Mukobi Paul</p>
+                        </div>
+                        <div class="teacher-card">
+                            <p class="teacher-name">Mr. Lubwama Fahad</p>
+                        </div>
+                        <div class="teacher-card">
+                            <p class="teacher-name">Mr. Kiwanuka Muzafar</p>
+                        </div>
+                        <div class="teacher-card">
+                            <p class="teacher-name">Ms. Nabbale Hadijah</p>
+                        </div>
+                        <div class="teacher-card">
+                            <p class="teacher-name">Mr. Kasagga Yasin</p>
+                        </div>
+                        <div class="teacher-card">
+                            <p class="teacher-name">Mr. Ssemwogerere Raymond</p>
+                        </div>
+                        <div class="teacher-card">
+                            <p class="teacher-name">Mr. Kimuli Fred</p>
+                        </div>
+                        <div class="teacher-card">
+                            <p class="teacher-name">Ms. Naluwembe Naema</p>
+                        </div>
+                        <div class="teacher-card">
+                            <p class="teacher-name">Ms. Katusiime Fortunate</p>
+                        </div>
+                        <div class="teacher-card">
+                            <p class="teacher-name">Ms. Subai Auma Maureen</p>
+                        </div>
+                        <div class="teacher-card">
+                            <p class="teacher-name">Mr. Talyaka Andrew</p>
+                        </div>
+                        <div class="teacher-card">
+                            <p class="teacher-name">Mr. Kiwanuka Muzafaru Wamala</p>
+                        </div>
+                        <div class="teacher-card">
+                            <p class="teacher-name">Mr. Buyondo Yasin</p>
+                        </div>
+                        <div class="teacher-card">
+                            <p class="teacher-name">Mr. Ssenakedde Abdulrakib</p>
+                        </div>
+                        <div class="teacher-card">
+                            <p class="teacher-name">Mr. Kirunda Ashraf</p>
+                        </div>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Theology Department -->
+                <div class="department theology">
+                    <div class="department-header">
+                        <h3 class="department-title">
+                            <i class="fas fa-mosque department-icon"></i>
+                            Theology Department
+                        </h3>
+                    </div>
+                    <div class="teachers-grid">
+                    <div class="teacher-card">
+                            <p class="teacher-name">Sheikh. Fauz Adama Kibirige</p>
+                        </div>
+                        <div class="teacher-card">
+                            <p class="teacher-name">Sheikh. Nsamba Abubakar</p>
+                        </div>
+                         <div class="teacher-card">
+                            <p class="teacher-name">Sheikh. Muhammad Bulime</p>
+                        </div>
+                         <div class="teacher-card">
+                            <p class="teacher-name">Sheikh. Kalule Faisal</p>
+                        </div>
+                         <div class="teacher-card">
+                            <p class="teacher-name">Sheikh. Mugisha Sudaisi</p>
+                        </div>
+                         <div class="teacher-card">
+                            <p class="teacher-name">Sheikh. Ali Katenda</p>
+                        </div>
+                        <div class="teacher-card">
+                            <p class="teacher-name">Sheikh Musa Gwamba</p>
+                        </div>
+                        <div class="teacher-card">
+                            <p class="teacher-name">Sheikh Ismail Katumba</p>
+                        </div>
+                        <div class="teacher-card">
+                            <p class="teacher-name">Sheikh Juma Kintu</p>
+                        </div>
+                         <div class="teacher-card">
+                            <p class="teacher-name">Sheikh. Kawagga Uthman</p>
+                        </div>
+                         <div class="teacher-card">
+                            <p class="teacher-name">Sheikh. Umar Musa Ssebuliba</p>
+                        </div>
+                         <div class="teacher-card">
+                            <p class="teacher-name">Sheikh. Bukenya Ibrahim</p>
+                        </div>
+                         <div class="teacher-card">
+                            <p class="teacher-name">Sheikh. Jalilu Ssemusota</p>
+                        </div>
+                         <div class="teacher-card">
+                            <p class="teacher-name">Sheikh. Kiraga Ramadhan</p>
+                        </div>
+                         <div class="teacher-card">
+                            <p class="teacher-name">Sheikh. Yusuf Sulaiman Muwaya</p>
+                        </div>
+                         <div class="teacher-card">
+                            <p class="teacher-name">Sheikh. Adiru Mashindano</p>
+                        </div>
+                         <div class="teacher-card">
+                            <p class="teacher-name">Sheikh. Kizito Kasenene</p>
+                        </div>
+                         <div class="teacher-card">
+                            <p class="teacher-name">Sheikh. Mutyaba Sulaiman</p>
+                        </div>
+                        <div class="teacher-card">
+                            <p class="teacher-name">Sheikh Ahmed Wakuze</p>
+                        </div>
+                        <div class="teacher-card">
+                            <p class="teacher-name">Sheikh Ibrahim Nsubuga</p>
+                        </div>
+                        <div class="teacher-card">
+                            <p class="teacher-name">Sheikh Zainul Kiwalabye</p>
+                        </div>
+                        <div class="teacher-card">
+                            <p class="teacher-name">Sheikh Uthman Kayongo</p>
+                        </div>
+                        <div class="teacher-card">
+                            <p class="teacher-name">Sheikh Ismail Katumba</p>
+                        </div>
+                        <div class="teacher-card">
+                            <p class="teacher-name">Sheikh Ssenyonga AbdulHakim</p>
+                        </div>
+                         <div class="teacher-card">
+                            <p class="teacher-name">Sheikh. Fahad Hashim Waiswa</p>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="ibn.html" class="back-link">
+                    <i class="fas fa-arrow-left"></i> Back to Home Page
+                </a>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-wave"></div>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-logo">
+                    <div class="footer-logo-placeholder">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Ibun Masood High School</h3>
+                    <p>Recite in the Name of Thy Lord</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="ibn.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a href="About.html"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                        <li><a href="academics.html"><i class="fas fa-chevron-right"></i> Academics</a></li>
+                        <li><a href="Admission.html"><i class="fas fa-chevron-right"></i> Admissions</a></li>
+                        <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Contact</a></li>
+                    </ul>
+                </div>
+                
+                

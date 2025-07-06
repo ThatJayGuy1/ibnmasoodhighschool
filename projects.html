@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School Projects - Ibun Masood High School</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css">
+    <style>
+        :root {
+            --primary-red: #c62828;
+            --primary-green: #2e7d32;
+            --light-blue: #4fc3f7;
+            --gold: #FFD700;
+            --dark-gray: #333;
+            --light-gray: #f5f5f5;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light-gray);
+            color: var(--dark-gray);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary-red), var(--primary-green));
+            color: white;
+            padding: 2rem 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .logo-title-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 1rem;
+            animation: fadeInDown 1s ease;
+        }
+
+        .logo-img {
+            height: 80px;
+            width: auto;
+            border-radius: 50%;
+            border: 3px solid var(--gold);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .logo-img:hover {
+            transform: rotate(10deg) scale(1.05);
+        }
+
+        .header-text {
+            text-align: center;
+        }
+
+        .header-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: white;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+            margin-bottom: 0.5rem;
+        }
+
+        .header-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 0.5rem;
+        }
+
+        .header-wave {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAwIDEyMCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+PHBhdGggZD0iTTAsNjMuMjVDMTUwLDYzLjI1IDMwMCw2My4yNSA0NTAsNjMuMjVDNjAwLDYzLjI1IDc1MCw2My4yNSA5MDAsNjMuMjVDMTA1MCw2My4yNSAxMjAwLDYzLjI1IDEyMDAsNjMuMjVWMTIwSDBWNjMuMjVaIiBmaWxsPSJ3aGl0ZSIgb3BhY2l0eT0iMC4xIi8+PHBhdGggZD0iTTAsODcuODc1QzE1MCw4Ny44NzUgMzAwLDg3Ljg3NSA0NTAsODcuODc1QzYwMCw4Ny44NzUgNzUwLDg3Ljg3NSA5MDAsODcuODc1QzEwNTAsODcuODc1IDEyMDAsODcuODc1IDEyMDAsODcuODc1VjEyMEgwVjg3Ljg3NVoiIGZpbGw9IndoaXRlIiBvcGFjaXR5PSIwLjIiLz48cGF0aCBkPSJNMCAxMjBMMTIwMCAxMjBWMTEyQzExNTAgOTAgMTA1MCA2MCA5MDAgNDVDNzUwIDMwIDYwMCAzMCA0NTAgMzBDMzAwIDMwIDE1MCAzMCAwIDYwVjEyMFoiIGZpbGw9IndoaXRlIiBvcGFjaXR5PSIwLjMiLz48L3N2Zz4=');
+            background-size: cover;
+            z-index: 1;
+        }
+
+        /* Filter Controls */
+        .filter-controls {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            max-width: 1200px;
+            margin: 2rem auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            animation: fadeIn 0.8s ease;
+        }
+
+        .filter-btn {
+            padding: 0.6rem 1.5rem;
+            border: none;
+            border-radius: 50px;
+            background-color: var(--light-gray);
+            color: var(--dark-gray);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: linear-gradient(135deg, var(--primary-red), var(--primary-green));
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Gallery Styles */
+        .gallery-container {
+            max-width: 1400px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            padding: 1rem;
+        }
+
+        .project-card {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+            aspect-ratio: 16/9;
+            animation: fadeInUp 0.8s ease;
+            background-color: white;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .project-img-container {
+            position: relative;
+            width: 100%;
+            height: 70%;
+            overflow: hidden;
+        }
+
+        .project-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s ease;
+        }
+
+        .project-card:hover .project-img {
+            transform: scale(1.1);
+        }
+
+        .project-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: linear-gradient(135deg, var(--primary-red), var(--primary-green));
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+            z-index: 2;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+            height: 30%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .project-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary-red);
+            margin-bottom: 0.5rem;
+        }
+
+        .project-description {
+            color: var(--dark-gray);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            display:-webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .project-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            color: #666;
+        }
+
+        .project-date {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .project-category {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            text-transform: uppercase;
+            font-weight: 600;
+            font-size: 0.75rem;
+            color: var(--primary-green);
+        }
+
+        /* Lightbox Override */
+        .lightbox-overlay {
+            background: rgba(0, 0, 0, 0.95) !important;
+            backdrop-filter: blur(5px);
+        }
+
+        .lightbox-image {
+            max-height: 90vh !important;
+            max-width: 90vw !important;
+            border: 5px solid white;
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.8);
+            border-radius: 5px;
+        }
+
+        .lightbox-nav {
+            filter: invert(1);
+        }
+
+        /* Project Modal */
+        .project-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            overflow-y: auto;
+            padding: 2rem;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-content {
+            background-color: white;
+            max-width: 1000px;
+            margin: 2rem auto;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            animation: slideUp 0.4s ease;
+        }
+
+        .modal-header {
+            padding: 1.5rem;
+            background: linear-gradient(135deg, var(--primary-red), var(--primary-green));
+            color: white;
+            position: relative;
+        }
+
+        .modal-title {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .modal-subtitle {
+            display: flex;
+            gap: 1.5rem;
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 1.8rem;
+            color: white;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .close-modal:hover {
+            transform: rotate(90deg);
+        }
+
+        .modal-body {
+            padding: 2rem;
+        }
+
+        .modal-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .modal-gallery img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .modal-gallery img:hover {
+            transform: scale(1.03);
+        }
+
+        .modal-description {
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+
+        .modal-footer {
+            padding: 1.5rem;
+            background-color: #f9f9f9;
+            border-top: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.8rem 1.5rem;
+            background: linear-gradient(135deg, var(--primary-red), var(--primary-green));
+            color: white;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .project-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--primary-green), var(--primary-red));
+            color: white;
+            padding: 3rem 0 1.5rem;
+            margin-top: 4rem;
+            position: relative;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-logo {
+            height: 70px;
+            margin-bottom: 1rem;
+            filter: brightness(0) invert(1);
+        }
+
+        .footer-text {
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background-color: white;
+            color: var(--primary-red);
+            transform: translateY(-3px);
+        }
+
+        .footer-links h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .footer-links h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background-color: var(--light-blue);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-bottom p {
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInDown {
+            from { 
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from { 
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideUp {
+            from { 
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+            
+            .header-title {
+                font-size: 2.2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .logo-title-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .header-title {
+                font-size: 2rem;
+            }
+            
+            .header-subtitle {
+                font-size: 1rem;
+            }
+            
+            .filter-controls {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .filter-btn {
+                width: 100%;
+            }
+            
+            .modal-content {
+                margin: 1rem auto;
+            }
+            
+            .modal-subtitle {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .header-title {
+                font-size: 1.8rem;
+            }
+            
+            .project-card {
+                aspect-ratio: 1/1;
+            }
+            
+            .modal-body {
+                padding: 1.5rem;
+            }
+            
+            .modal-footer {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="header-wave"></div>
+        <div class="header-container">
+            <div class="logo-title-container">
+                <img src="Logo.jpg" alt="Ibun Masood High School Logo" class="logo-img">
+                <div class="header-text">
+                    <h1 class="header-title">School Projects Gallery</h1>
+                    <p class="header-subtitle">Ibun Masood High School - Kibiri</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Filter Controls -->
+    <div class="filter-controls">
+        <button class="filter-btn active" data-filter="all">All Projects</button>
+        <button class="filter-btn" data-filter="science">Science & Tech</button>
+        <button class="filter-btn" data-filter="arts">Arts & Creativity</button>
+        <button class="filter-btn" data-filter="community">Community Service</button>
+        <button class="filter-btn" data-filter="theology">Theology</button>
+        <button class="filter-btn" data-filter="entrepreneurship">Entrepreneurship</button>
+    </div>
+
+    <!-- Projects Gallery -->
+    <div class="gallery-container">
+        <div class="gallery-grid">
+            <!-- Project 1 -->
+            <div class="project-card" data-category="science">
+                <div class="project-img-container">
+                    <img src="https://source.unsplash.com/random/800x600/?science,experiment" alt="Science Fair Project" class="project-img">
+                    <span class="project-badge">Science</span>
+                </div>
+                <div class="project-content">
+                    <div>
+                        <h3 class="project-title">Annual Science Fair</h3>
+                        <p class="project-description">Students showcase innovative experiments in physics, chemistry, and biology with practical applications.</p>
+                    </div>
+                    <div class="project-meta">
+                        <span class="project-date"><i class="far fa-calendar-alt"></i> May 15, 2025</span>
+                        <span class="project-category"><i class="fas fa-flask"></i> Science</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="project-card" data-category="arts">
+                <div class="project-img-container">
+                    <img src="https://source.unsplash.com/random/800x600/?art,exhibition" alt="Art Exhibition" class="project-img">
+                    <span class="project-badge">Arts</span>
+                </div>
+                <div class="project-content">
+                    <div>
+                        <h3 class="project-title">Creative Arts Exhibition</h3>
+                        <p class="project-description">Annual showcase of student artwork including paintings, sculptures, and digital media creations.</p>
+                    </div>
+                    <div class="project-meta">
+                        <span class="project-date"><i class="far fa-calendar-alt"></i> March 22, 2025</span>
+                        <span class="project-category"><i class="fas fa-palette"></i> Arts</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 3 -->
+            <div class="project-card" data-category="community">
+                <div class="project-img-container">
+                    <img src="https://source.unsplash.com/random/800x600/?community,service" alt="Community Service" class="project-img">
+                    <span class="project-badge">Community</span>
+                </div>
+                <div class="project-content">
+                    <div>
+                        <h3 class="project-title">Neighborhood Cleanup</h3>
+                        <p class="project-description">Students participate in environmental conservation by cleaning local communities and planting trees.</p>
+                    </div>
+                    <div class="project-meta">
+                        <span class="project-date"><i class="far fa-calendar-alt"></i> April 5, 2025</span>
+                        <span class="project-category"><i class="fas fa-hands-helping"></i> Community</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 4 -->
+            <div class="project-card" data-category="theology">
+                <div class="project-img-container">
+                    <img src="https://source.unsplash.com/random/800x600/?islamic,study" alt="Theology Project" class="project-img">
+                    <span class="project-badge">Theology</span>
+                </div>
+                <div class="project-content">
+                    <div>
+                        <h3 class="project-title">Quran Memorization</h3>
+                        <p class="project-description">Students demonstrate their memorization of Quranic verses with proper tajweed and understanding.</p>
+                    </div>
+                    <div class="project-meta">
+                        <span class="project-date"><i class="far fa-calendar-alt"></i> June 18, 2025</span>
+                        <span class="project-category"><i class="fas fa-mosque"></i> Theology</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 5 -->
+            <div class="project-card" data-category="entrepreneurship">
+                <div class="project-img-container">
+                    <img src="https://source.unsplash.com/random/800x600/?business,startup" alt="Business Project" class="project-img">
+                    <span class="project-badge">Business</span>
+                </div>
+                <div class="project-content">
+                    <div>
+                        <h3 class="project-title">Young Entrepreneurs</h3>
+                        <p class="project-description">Students create and manage small businesses, learning practical entrepreneurship skills.</p>
+                    </div>
+                    <div class="project-meta">
+                        <span class="project-date"><i class="far fa-calendar-alt"></i> July 10, 2025</span>
+                        <span class="project-category"><i class="fas fa-business-time"></i> Business</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 6 -->
+            <div class="project-card" data-category="science">
+                <div class="project-img-container">
+                    <img src="https://source.unsplash.com/random/800x600/?technology,robotics" alt="Robotics Project" class="project-img">
+                    <span class="project-badge">Technology</span>
+                </div>
+                <div class="project-content">
+                    <div>
+                        <h3 class="project-title">Robotics Club</h3>
+                        <p class="project-description">Students design and build functional robots to solve real-world problems through STEM education.</p>
+                    </div>
+                    <div class="project-meta">
+                        <span class="project-date"><i class="far fa-calendar-alt"></i> August 3, 2025</span>
+                        <span class="project-category"><i class="fas fa-robot"></i> Technology</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Add more projects following the same pattern -->
+            <!-- Project 7 -->
+            <div class="project-card" data-category="arts">
+                <div class="project-img-container">
+                    <img src="https://source.unsplash.com/random/800x600/?drama,performance" alt="Drama Performance" class="project-img">
+                    <span class="project-badge">Performing Arts</span>
+                </div>
+                <div class="project-content">
+                    <div>
+                        <h3 class="project-title">Annual Drama Festival</h3>
+                        <p class="project-description">Students perform plays addressing social issues, showcasing their acting and production talents.</p>
+                    </div>
+                    <div class="project-meta">
+                        <span class="project-date"><i class="far fa-calendar-alt"></i> September 12, 2025</span>
+                        <span class="project-category"><i class="fas fa-theater-masks"></i> Performing Arts</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 8 -->
+            <div class="project-card" data-category="community">
+                <div class="project-img-container">
+                    <img src="https://source.unsplash.com/random/800x600/?charity,donation" alt="Charity Project" class="project-img">
+                    <span class="project-badge">Charity</span>
+                </div>
+                <div class="project-content">
+                    <div>
+                        <h3 class="project-title">Ramadan Food Drive</h3>
+                        <p class="project-description">Students collect and distribute food packages to underprivileged families during the holy month.</p>
+                    </div>
+                    <div class="project-meta">
+                        <span class="project-date"><i class="far fa-calendar-alt"></i> March 30, 2025</span>
+                        <span class="project-category"><i class="fas fa-hand-holding-heart"></i> Charity</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Project Modal (Hidden by default) -->
+    <div id="projectModal" class="project-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Annual Science Fair</h2>
+                <div class="modal-subtitle">
+                    <span><i class="far fa-calendar-alt"></i> May 15, 2025</span>
+                    <span><i class="fas fa-map-marker-alt"></i> School Main Hall</span>
+                    <span><i class="fas fa-users"></i> Grade 10-12 Students</span>
+                </div>
+                <span class="close-modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="modal-gallery">
+                    <a href="https://source.unsplash.com/random/1200x800/?science,experiment" data-lightbox="modal-gallery">
+                        <img src="https://source.unsplash.com/random/400x300/?science,experiment" alt="Science Fair">
+                    </a>
+                    <a href="https://source.unsplash.com/random/1200x800/?physics,lab" data-lightbox="modal-gallery">
+                        <img src="https://source.unsplash.com/random/400x300/?physics,lab" alt="Physics Experiment">
+                    </a>
+                    <a href="https://source.unsplash.com/random/1200x800/?chemistry,lab" data-lightbox="modal-gallery">
+                        <img src="https://source.unsplash.com/random/400x300/?chemistry,lab" alt="Chemistry Experiment">
+                    </a>
+                    <a href="https://source.unsplash.com/random/1200x800/?biology,lab" data-lightbox="modal-gallery">
+                        <img src="https://source.unsplash.com/random/400x300/?biology,lab" alt="Biology Experiment">
+                    </a>
+                </div>
+                <div class="modal-description">
+                    <p>Our annual science fair showcases the innovative projects developed by students across all science disciplines. This year's theme was "Sustainable Solutions for Tomorrow," with projects focusing on renewable energy, waste management, and eco-friendly technologies.</p>
+                    <p>Students worked in teams for three months to research, design, and implement their projects. The fair was judged by a panel of local scientists and university professors, with prizes awarded for creativity, scientific rigor, and practical application.</p>
+                    <p>Highlights included a solar-powered water purification system, a biodegradable plastic alternative made from agricultural waste, and an AI-based system for monitoring air quality in urban areas.</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <span><strong>Project Supervisor:</strong> Dr. Amina Nalwoga</span>
+                <a href="#" class="project-link">View Full Project Report <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-about">
+                <img src="Flat.jpg" alt="Ibun Masood High School Logo" class="footer-logo">
+                <p class="footer-text">Providing quality education for both secular and theological studies since 2005.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://x.com/ibunmasood?t=5mBEtqOb_RPjPAaPXvfieA&s=09"><i class="fab fa-twitter"></i></a>
+                    <a href="https://wa.me/703126828"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://www.tiktok.com/@ibunmasoodhighschool"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="ibn.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="academics.html">Academics</a></li>
+                    <li><a href="admissions.html">Admissions</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-links">
+                <h3>Projects</h3>
+                <ul>
+                    <li><a href="#">Science & Technology</a></li>
+                    <li><a href="#">Arts & Creativity</a></li>
+                    <li><a href="#">Community Service</a></li>
+                    <li><a href="#">Theology</a></li>
+                    <li><a href="#">Entrepreneurship</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-links">
+                <h3>Contact Info</h3>
+                <ul>
+                    <li><i class="fas fa-map-marker-alt"></i> Kibiri - Busaabala Road</li>
+                    <li><i class="fas fa-phone-alt"></i> 0782 311 464 / 0702 311 464</li>
+                    <li><i class="fas fa-envelope"></i> info@ibunmasood.ac.ug</li>
+                    <li><i class="fas fa-clock"></i> Mon-Fri: 7:00AM - 5:00PM</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2025 Ibun Masood High School. All Rights Reserved.</p>
+            <p><em>Recite in the Name of Thy Lord</em></p>
+        </div>
+    </footer>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Filter projects
+            $('.filter-btn').click(function() {
+                $('.filter-btn').removeClass('active');
+                $(this).addClass('active');
+                
+                const filter = $(this).data('filter');
+                if (filter === 'all') {
+                    $('.project-card').fadeIn(500);
+                } else {
+                    $('.project-card').each(function() {
+                        if ($(this).data('category') === filter) {
+                            $(this).fadeIn(500);
+                        } else {
+                            $(this).fadeOut(500);
+                        }
+                    });
+                }
+            });
+            
+            // Project modal functionality
+            $('.project-card').click(function() {
+                // In a real implementation, you would dynamically populate the modal
+                // with data specific to the clicked project
+                $('#projectModal').fadeIn(300);
+                $('body').css('overflow', 'hidden');
+            });
+            
+            $('.close-modal').click(function() {
+                $('#projectModal').fadeOut(300);
+                $('body').css('overflow', 'auto');
+            });
+            
+            // Close modal when clicking outside
+            $(window).click(function(e) {
+                if ($(e.target).hasClass('project-modal')) {
+                    $('#projectModal').fadeOut(300);
+                    $('body').css('overflow', 'auto');
+                }
+            });
+            
+            // Lightbox configuration
+            lightbox.option({
+                'resizeDuration': 300,
+                'wrapAround': true,
+                'showImageNumberLabel': true,
+                'positionFromTop': 100,
+                'albumLabel': 'Image %1 of %2'
+            });
+            
+            // Animate project cards on scroll
+            function animateOnScroll() {
+                $('.project-card').each(function() {
+                    const cardTop = $(this).offset().top;
+                    const windowBottom = $(window).scrollTop() + $(window).height();
+                    
+                    if (cardTop < windowBottom - 100) {
+                        $(this).css('opacity', '1').css('transform', 'translateY(0)');
+                    }
+                });
+            }
+            
+            // Initial animation
+            setTimeout(function() {
+                animateOnScroll();
+            }, 500);
+            
+            // Animate on scroll
+            $(window).scroll(function() {
+                animateOnScroll();
+            });
+        });
+    </script>
+</body>
+</html>

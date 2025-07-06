@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ibn Masood High School - Photo Gallery</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css">
+    <style>
+        :root {
+            --primary-red: #c62828;
+            --primary-green: #2e7d32;
+            --light-blue: #4fc3f7;
+            --gold: #FFD700;
+            --dark-gray: #333;
+            --light-gray: #f5f5f5;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light-gray);
+            color: var(--dark-gray);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary-red), var(--primary-green));
+            color: white;
+            padding: 1.5rem 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .logo-title {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            animation: fadeInDown 1s ease;
+        }
+
+        .logo-img {
+            height: 70px;
+            width: auto;
+            border-radius: 50%;
+            border: 3px solid var(--gold);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .header-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .header-subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-top: 0.5rem;
+        }
+
+        /* Gallery Styles */
+        .gallery-container {
+            max-width: 1400px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .gallery-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--primary-red);
+            position: relative;
+            padding-bottom: 1rem;
+            font-size: 2rem;
+        }
+
+        .gallery-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-red), var(--primary-green));
+            border-radius: 2px;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            padding: 1rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+            aspect-ratio: 4/3;
+            animation: fadeIn 0.8s ease;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .gallery-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover .gallery-img {
+            transform: scale(1.05);
+        }
+
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+            color: white;
+            padding: 1rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-caption {
+            opacity: 1;
+        }
+
+        /* Lightbox Override */
+        .lightbox-overlay {
+            background: rgba(0, 0, 0, 0.9) !important;
+        }
+
+        .lightbox-image {
+            max-height: 90vh !important;
+            border: 5px solid white;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes zoomIn {
+            from {
+                transform: scale(0.9);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--primary-green), var(--primary-red));
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .footer-text {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .header-title {
+                font-size: 1.8rem;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo-title {
+                flex-direction: column;
+            }
+
+            .header-title {
+                font-size: 1.5rem;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with Logo & Title -->
+    <header>
+        <div class="header-container">
+            <div class="logo-title">
+                <!-- Replace with your actual logo path -->
+                <img src="Logo.jpg" alt="Ibn Masood High School Logo" class="logo-img">
+                <h1 class="header-title">Ibn Masood High School <span style="display: block; font-size: 1.2rem;">In Pictures</span></h1>
+            </div>
+            <p class="header-subtitle">Capturing Moments, Building Memories</p>
+        </div>
+    </header>
+
+    <!-- Photo Gallery Grid -->
+    <div class="gallery-container">
+        <h2 class="gallery-title">Our School Gallery</h2>
+        <div class="gallery-grid">
+            <!-- Sample Images (Replace with your actual images) -->
+            <!-- 30+ Images (Can add more without breaking layout) -->
+            <a href="https://source.unsplash.com/random/800x600/?school,classroom" data-lightbox="gallery" class="gallery-item">
+                <img src="classroom 5.jpg" alt="Classroom Activity" class="gallery-img">
+                <div class="gallery-caption">Students in Classroom</div>
+            </a>
+            <a href="https://source.unsplash.com/random/800x600/?school,sports" data-lightbox="gallery" class="gallery-item">
+                <img src="Flat.jpg" alt="Sports Day" class="gallery-img">
+                <div class="gallery-caption">Classroom Block</div>
+            </a>
+            <a href="https://source.unsplash.com/random/800x600/?school,library" data-lightbox="gallery" class="gallery-item">
+                <img src="library.jpg" alt="Library" class="gallery-img">
+                <div class="gallery-caption">School Library</div>
+            </a>
+            <a href="https://source.unsplash.com/random/800x600/?school,lab" data-lightbox="gallery" class="gallery-item">
+                <img src="computer lab.jpg" alt="Science Lab" class="gallery-img">
+                <div class="gallery-caption">Combuter Lab</div>
+            </a>
+            <a href="https://source.unsplash.com/random/800x600/?school,event" data-lightbox="gallery" class="gallery-item">
+                <img src="Girls Hostel.jpg" alt="School Event" class="gallery-img">
+                <div class="gallery-caption">Girls Hostel</div>
+            </a>
+            <a href="https://source.unsplash.com/random/800x600/?school,teacher" data-lightbox="gallery" class="gallery-item">
+                <img src="classroom.jpg" alt="Teacher" class="gallery-img">
+                <div class="gallery-caption">Revision Time</div>
+            </a>
+            <!-- Add more images as needed (copy-paste <a> blocks) -->
+            <!-- Example of additional images (25 more) -->
+            <a href="https://source.unsplash.com/random/800x600/?school,art" data-lightbox="gallery" class="gallery-item">
+                <img src="https://source.unsplash.com/random/300x200/?school,art" alt="Art Class" class="gallery-img">
+                <div class="gallery-caption">Art & Craft Session</div>
+            </a>
+            <a href="https://source.unsplash.com/random/800x600/?school,assembly" data-lightbox="gallery" class="gallery-item">
+                <img src="https://source.unsplash.com/random/300x200/?school,assembly" alt="Morning Assembly" class="gallery-img">
+                <div class="gallery-caption">Morning Assembly</div>
+            </a>
+            <!-- Continue adding more... -->
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-text">
+            <p>&copy; 2025 Ibn Masood High School. All Rights Reserved.</p>
+            <p>KIBIRI - BUSAABALA ROAD</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+    <script>
+        // Initialize lightbox with custom settings
+        lightbox.option({
+            'resizeDuration': 300,
+            'wrapAround': true,
+            'showImageNumberLabel': true,
+            'positionFromTop': 100
+        });
+
+        // Animate gallery items on scroll
+        $(document).ready(function() {
+            $('.gallery-item').each(function(i) {
+                $(this).delay(i * 100).queue(function() {
+                    $(this).addClass('animated zoomIn').dequeue();
+                });
+            });
+        });
+    </script>
+</body>
+</html>

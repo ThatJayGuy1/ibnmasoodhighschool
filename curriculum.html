@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curriculum - Ibun Masood High School</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'school-red': '#DC2626',
+                        'school-blue': '#2563EB',
+                        'school-grey': '#6B7280',
+                        'school-green': '#059669'
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.6s ease-in-out',
+                        'slide-up': 'slideUp 0.8s ease-out',
+                        'float': 'float 3s ease-in-out infinite'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideUp {
+            from { transform: translateY(30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #2563EB 0%, #059669 50%, #DC2626 100%);
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans">
+    <!-- Header -->
+    <header class="gradient-bg text-white shadow-2xl">
+        <div class="container mx-auto px-6 py-8">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-4">
+                    <!-- School Logo Placeholder -->
+                    <div class="w-16 h-16 flex items-center justify-center animate-float">
+                        <div class="logo">
+                            <img src="Logo.jpg" alt="school logo">
+                        </div>
+                    </div>
+                    <div>
+                        <h1 class="text-3xl font-bold animate-fade-in">Ibun Masood High School</h1>
+                        <p class="text-blue-100 mt-1 animate-fade-in">Excellence in Education & Islamic Values</p>
+                    </div>
+                </div>
+                <nav class="hidden md:flex space-x-6">
+                    <a href="ibn.html" class="text-white hover:text-blue-200 transition-colors duration-300 font-medium">Home</a>
+                    <a href="curriculum.html" class="text-blue-200 font-medium">Curriculum</a>
+                    <a href="About.html" class="text-white hover:text-blue-200 transition-colors duration-300 font-medium">About</a>
+                    <a href="contact.html" class="text-white hover:text-blue-200 transition-colors duration-300 font-medium">Contact</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative py-16 bg-gradient-to-r from-blue-50 to-green-50">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-5xl font-bold text-gray-800 mb-6 animate-slide-up">
+                Our <span class="text-school-blue">Comprehensive</span> 
+                <span class="text-school-green">Curriculum</span>
+            </h2>
+            <p class="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed animate-slide-up">
+                Combining secular education with Islamic theology studies to nurture well-rounded individuals prepared for both worldly success and spiritual fulfillment.
+            </p>
+            <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+                <div class="bg-white rounded-lg p-4 shadow-lg card-hover">
+                    <div class="w-12 h-12 bg-school-red rounded-full mx-auto mb-3 flex items-center justify-center">
+                        <span class="text-white font-bold">O</span>
+                    </div>
+                    <h3 class="font-semibold text-school-red">Ordinary Level</h3>
+                    <p class="text-sm text-gray-600">4-Year Program</p>
+                </div>
+                <div class="bg-white rounded-lg p-4 shadow-lg card-hover">
+                    <div class="w-12 h-12 bg-school-blue rounded-full mx-auto mb-3 flex items-center justify-center">
+                        <span class="text-white font-bold">A</span>
+                    </div>
+                    <h3 class="font-semibold text-school-blue">Advanced Level</h3>
+                    <p class="text-sm text-gray-600">2-Year Program</p>
+                </div>
+                <div class="bg-white rounded-lg p-4 shadow-lg card-hover">
+                    <div class="w-12 h-12 bg-school-green rounded-full mx-auto mb-3 flex items-center justify-center">
+                        <span class="text-white font-bold">T</span>
+                    </div>
+                    <h3 class="font-semibold text-school-green">Theology Program</h3>
+                    <p class="text-sm text-gray-600">Multi-Level Islamic Studies</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-6 py-16">
+        <!-- Ordinary Level Section -->
+        <section class="mb-20">
+            <div class="text-center mb-12">
+                <h3 class="text-4xl font-bold text-school-red mb-4 animate-slide-up">
+                    Ordinary Level ("O" Level)
+                </h3>
+                <div class="w-24 h-1 bg-school-red mx-auto mb-6"></div>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Four-year program leading to Uganda Certificate of Education (UCE) examinations
+                </p>
+            </div>
+            
+             <div class="bg-white rounded-2xl shadow-2xl p-8 card-hover">
+                <h4 class="text-2xl font-semibold text-gray-800 mb-8 text-center">Principal Subjects Offered</h4>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="subject-card bg-blue-50 border-l-4 border-school-blue p-4 rounded-lg card-hover">
+                        <h5 class="font-semibold text-school-blue mb-2">Humanities</h5>
+                        <ul class="text-gray-700 space-y-1">
+                            <li>• History</li>
+                            <li>• Geography</li>
+                            <li>• History & Political Education</li>
+                            <li>• Islamic Religious Education - IRE</li>
+                            <li>• Christian Religious Education - CRE</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="subject-card bg-green-50 border-l-4 border-school-green p-4 rounded-lg card-hover">
+                        <h5 class="font-semibold text-school-green mb-2">Sciences</h5>
+                        <ul class="text-gray-700 space-y-1">
+                            <li>• Mathematics</li>
+                            <li>• Physics</li>
+                            <li>• Chemistry</li>
+                            <li>• Biology</li>
+                            <li>• Physical Education</li>
+                            <li>• Foods and Nutrition</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="subject-card bg-red-50 border-l-4 border-school-red p-4 rounded-lg card-hover">
+                        <h5 class="font-semibold text-school-red mb-2">Vocational Studies</h5>
+                        <ul class="text-gray-700 space-y-1">
+                            <li>• Economics</li>
+                            <li>• Entrepreneurship</li>
+                            <li>• Agriculture</li>
+                            <li>• Art & Design</li>
+                            <li>• Information & Communitions Technology -ICT</li>
+
+                        </ul>
+                    </div>
+                    
+                    <div class="subject-card bg-purple-50 border-l-4 border-purple-500 p-4 rounded-lg card-hover">
+                        <h5 class="font-semibold text-purple-600 mb-2">Languages</h5>
+                        <ul class="text-gray-700 space-y-1">
+                            <li>• Literature</li>
+                            <li>• English</li>
+                            <li>• Arabic</li>
+                            <li>• Swahili</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        <!-- Advanced Level Section -->
+        <section class="mb-20">
+            <div class="text-center mb-12">
+                <h3 class="text-4xl font-bold text-school-blue mb-4 animate-slide-up">
+                    Advanced Level ("A" Level)
+                </h3>
+                <div class="w-24 h-1 bg-school-blue mx-auto mb-6"></div>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Two-year program leading to Uganda Advanced Certificate of Education (UACE) examinations
+                </p>
+            </div>
+            
+            <div class="bg-white rounded-2xl shadow-2xl p-8 card-hover">
+                <h4 class="text-2xl font-semibold text-gray-800 mb-8 text-center">Subjects Offered</h4>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="subject-card bg-blue-50 border-l-4 border-school-blue p-4 rounded-lg card-hover">
+                        <h5 class="font-semibold text-school-blue mb-2">Humanities</h5>
+                        <ul class="text-gray-700 space-y-1">
+                            <li>• History</li>
+                            <li>• Geography</li>
+                            <li>• History & Political Education</li>
+                            <li>• Islamic Religious Education - IRE</li>
+                            <li>• Christian Religious Education - CRE</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="subject-card bg-green-50 border-l-4 border-school-green p-4 rounded-lg card-hover">
+                        <h5 class="font-semibold text-school-green mb-2">Sciences</h5>
+                        <ul class="text-gray-700 space-y-1">
+                            <li>• Mathematics</li>
+                            <li>• Physics</li>
+                            <li>• Chemistry</li>
+                            <li>• Biology</li>
+                            <li>• Physical Education</li>
+                            <li>• Foods and Nutrition</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="subject-card bg-red-50 border-l-4 border-school-red p-4 rounded-lg card-hover">
+                        <h5 class="font-semibold text-school-red mb-2">Vocational Studies</h5>
+                        <ul class="text-gray-700 space-y-1">
+                            <li>• Economics</li>
+                            <li>• Entrepreneurship</li>
+                            <li>• Agriculture</li>
+                            <li>• Art & Design</li>
+                            <li>• Information & Communitions Technology -ICT</li>
+
+                        </ul>
+                    </div>
+                    
+                    <div class="subject-card bg-purple-50 border-l-4 border-purple-500 p-4 rounded-lg card-hover">
+                        <h5 class="font-semibold text-purple-600 mb-2">Languages</h5>
+                        <ul class="text-gray-700 space-y-1">
+                            <li>• Literature</li>
+                            <li>• English</li>
+                            <li>• Arabic</li>
+                            <li>• Swahili</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Theology Program Section -->
+        <section class="mb-20">
+            <div class="text-center mb-12">
+                <h3 class="text-4xl font-bold text-school-green mb-4 animate-slide-up">
+                    Theology Program
+                </h3>
+                <div class="w-24 h-1 bg-school-green mx-auto mb-6"></div>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Our unique theology program ranges from beginner to advanced levels, offering comprehensive Islamic studies
+                </p>
+            </div>
+            
+            <div class="bg-white rounded-2xl shadow-2xl p-8 card-hover">
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <!-- Beginner Level -->
+                    <div class="bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl p-6 border border-green-200">
+                        <div class="text-center mb-6">
+                            <div class="w-16 h-16 bg-school-green rounded-full mx-auto mb-4 flex items-center justify-center">
+                                <span class="text-white font-bold text-xl">1</span>
+                            </div>
+                            <h4 class="text-xl font-bold text-school-green">Beginner Classes</h4>
+                        </div>
+                        <ul class="space-y-3 text-gray-700">
+                            <li class="flex items-center">
+                                <span class="w-2 h-2 bg-school-green rounded-full mr-3"></span>
+                                Shuba Aalifu
+                            </li>
+                            <li class="flex items-center">
+                                <span class="w-2 h-2 bg-school-green rounded-full mr-3"></span>
+                                Shuba Ba
+                            </li>
+                        </ul>
+                        <p class="text-sm text-gray-600 mt-4 italic">Introduction to Islamic studies</p>
+                    </div>
+                    
+                    <!-- Intermediate Level -->
+                    <div class="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-xl p-6 border border-blue-200">
+                        <div class="text-center mb-6">
+                            <div class="w-16 h-16 bg-school-blue rounded-full mx-auto mb-4 flex items-center justify-center">
+                                <span class="text-white font-bold text-xl">2</span>
+                            </div>
+                            <h4 class="text-xl font-bold text-school-blue">Intermediate Levels</h4>
+                        </div>
+                        <ul class="space-y-3 text-gray-700">
+                            <li class="flex items-center">
+                                <span class="w-2 h-2 bg-school-blue rounded-full mr-3"></span>
+                                Sabia'a
+                            </li>
+                            <li class="flex items-center">
+                                <span class="w-2 h-2 bg-school-blue rounded-full mr-3"></span>
+                                Thalitha Idaad
+                            </li>
+                        </ul>
+                        <p class="text-sm text-gray-600 mt-4 italic">Progressive Islamic education</p>
+                    </div>
+                    
+                    <!-- Advanced Level -->
+                    <div class="bg-gradient-to-br from-red-50 to-pink-50 rounded-xl p-6 border border-red-200">
+                        <div class="text-center mb-6">
+                            <div class="w-16 h-16 bg-school-red rounded-full mx-auto mb-4 flex items-center justify-center">
+                                <span class="text-white font-bold text-xl">3</span>
+                            </div>
+                            <h4 class="text-xl font-bold text-school-red">Advanced Level</h4>
+                        </div>
+                        <ul class="space-y-3 text-gray-700">
+                            <li class="flex items-center">
+                                <span class="w-2 h-2 bg-school-red rounded-full mr-3"></span>
+                                Thanawi Class
+                            </li>
+                        </ul>
+                        <p class="text-sm text-gray-600 mt-4 italic">Senior theology class with comprehensive studies</p>
+                    </div>
+                </div>
+                
+                <div class="mt-8 p-6 bg-gradient-to-r from-gray-50 to-gray-100 rounded-xl border border-gray-200">
+                    <div class="text-center">
+                        <h5 class="text-lg font-semibold text-gray-800 mb-2">National Examination Center</h5>
+                        <p class="text-gray-600">
+                            The school has acquired center numbers for national theology examinations at all levels, 
+                            ensuring our students receive nationally recognized certification.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="mb-16">
+            <div class="bg-gradient-to-r from-gray-800 to-gray-900 rounded-2xl p-12 text-white">
+                <h3 class="text-3xl font-bold text-center mb-8">Why Choose Our Curriculum?</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-school-red rounded-full mx-auto mb-4 flex items-center justify-center">
+                            <span class="text-2xl">📚</span>
+                        </div>
+                        <h4 class="font-semibold mb-2">Comprehensive Education</h4>
+                        <p class="text-gray-300 text-sm">Balanced secular and Islamic education</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-school-blue rounded-full mx-auto mb-4 flex items-center justify-center">
+                            <span class="text-2xl">🏆</span>
+                        </div>
+                        <h4 class="font-semibold mb-2">National Recognition</h4>
+                        <p class="text-gray-300 text-sm">Certified programs with UCE & UACE</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-school-green rounded-full mx-auto mb-4 flex items-center justify-center">
+                            <span class="text-2xl">🌱</span>
+                        </div>
+                        <h4 class="font-semibold mb-2">Holistic Development</h4>
+                        <p class="text-gray-300 text-sm">Character building with academic excellence</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-school-grey rounded-full mx-auto mb-4 flex items-center justify-center">
+                            <span class="text-2xl">💡</span>
+                        </div>
+                        <h4 class="font-semibold mb-2">Modern Approach</h4>
+                        <p class="text-gray-300 text-sm">Technology integration in learning</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="gradient-bg text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="text-center md:text-left">
+                    <div class="flex items-center justify-center md:justify-start space-x-4 mb-4">
+                        <!-- School Logo Placeholder -->
+                        <div class="w-12 h-12 flex items-center justify-center">
+                            <div class="w-8 h-8 flex items-center justify-center">
+                                <span><img src="Logo.jpg"></span>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold">Ibun Masood High School</h3>
+                            <p class="text-blue-100 text-sm">Recite in the name of Thy Lord</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="text-center">
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="ibn.html" class="text-blue-100 hover:text-white transition-colors">Home</a></li>
+                        <li><a href="Admission.html" class="text-blue-100 hover:text-white transition-colors">Admissions</a></li>
+                        <li><a href="academics.html" class="text-blue-100 hover:text-white transition-colors">Academics</a></li>
+                        <li><a href="#" class="text-blue-100 hover:text-white transition-colors">News & Events</a></li>
+                    </ul>
+                </div>
+                
+                <div class="text-center md:text-right">
+                    <h4 class="text-lg font-semibold mb-4">Contact Info</h4>
+                    <div class="space-y-2 text-blue-100">
+                        <p>📧ibunmasoodhighschool@gmail.com</p>
+                        <p>📞 +256 782 311 464</p>
+                        <p>📞 +256 702 311 464</p>
+                        <p>📞 +256 703 126 828</p>
+                        <p>📞 +256 701 280 699</p>
+                        <p>📍 Kibiri-Busabala Road Kampala, Uganda</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-white/20 mt-8 pt-8 text-center">
+                <p class="text-blue-100">
+                    © 2025 Ibun Masood High School. All rights reserved. | 
+                    <span class="text-white">Building Leaders for Tomorrow</span>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Add smooth scrolling and animation effects
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animate elements on scroll
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animationDelay = '0.2s';
+                        entry.target.classList.add('animate-slide-up');
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all cards
+            document.querySelectorAll('.card-hover').forEach(card => {
+                observer.observe(card);
+            });
+
+            // Add dynamic hover effects
+            document.querySelectorAll('.subject-card').forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'scale(1.02)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'scale(1)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>

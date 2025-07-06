@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Religious Articles - Ibun Masood High School</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-red: #c62828;
+            --primary-green: #2e7d32;
+            --light-blue: #4fc3f7;
+            --gray: #757575;
+            --light-gray: #f5f5f5;
+            --dark-blue: #1a3a5a;
+            --gold: #e8c336;
+            --white: #ffffff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            background-color: var(--light-gray);
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary-red), var(--primary-green));
+            color: white;
+            padding: 2rem 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            position: relative;
+            overflow: hidden;
+            min-height: 300px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            width: 100%;
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            animation: fadeInDown 1s ease;
+        }
+        
+        .logo {
+            display: inline-flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .logo-icon {
+            font-size: 2.5rem;
+            margin-right: 1rem;
+            color: var(--gold);
+        }
+        
+        .logo-text h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.3rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        
+        .logo-text p {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        
+        .header-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjA1KSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNwYXR0ZXJuKSIvPjwvc3ZnPg==');
+            opacity: 0.3;
+            z-index: 1;
+        }
+        
+        .header-verse {
+            font-style: italic;
+            margin-top: 1rem;
+            font-size: 1.2rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .header-verse:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--gold);
+        }
+        
+        /* Main Content Styles */
+        .main-container {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: var(--primary-red);
+            display: inline-block;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+        
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-red), var(--primary-green));
+            border-radius: 2px;
+        }
+        
+        .article {
+            background: white;
+            border-radius: 10px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            margin: 3rem 0;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .article:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+        }
+        
+        .article:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--primary-red), var(--primary-green));
+        }
+        
+        .article-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        
+        .article-header h2 {
+            font-size: 1.8rem;
+            color: var(--dark-blue);
+            font-weight: 600;
+        }
+        
+        .author {
+            font-style: italic;
+            color: var(--gray);
+            background: var(--light-gray);
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+        
+        .article p {
+            margin-bottom: 1.2rem;
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: #444;
+        }
+        
+        .article h3 {
+            color: var(--primary-green);
+            margin: 2rem 0 1rem;
+            font-size: 1.4rem;
+            position: relative;
+            padding-left: 1rem;
+        }
+        
+        .article h3:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 5px;
+            height: 70%;
+            background-color: var(--light-blue);
+            border-radius: 3px;
+        }
+        
+        .quote {
+            font-style: italic;
+            color: var(--dark-blue);
+            border-left: 3px solid var(--gold);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            background: rgba(233, 196, 54, 0.08);
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .arabic {
+            direction: rtl;
+            font-family: 'Amiri', serif;
+            font-size: 1.4rem;
+            line-height: 2;
+            color: var(--primary-green);
+            text-align: right;
+        }
+        
+        .translation {
+            font-style: italic;
+            color: var(--gray);
+            margin-top: 0.8rem;
+            padding-left: 1rem;
+            border-left: 2px dashed var(--light-blue);
+        }
+        
+        .values-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .value-item {
+            background: linear-gradient(135deg, rgba(79, 195, 247, 0.1), rgba(233, 196, 54, 0.1));
+            padding: 1.5rem;
+            border-radius: 8px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(79, 195, 247, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .value-item:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--primary-green), var(--light-blue));
+        }
+        
+        .value-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .value-item p {
+            margin: 0;
+            position: relative;
+            padding-left: 1rem;
+        }
+        
+        .value-item p:before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--primary-red);
+            font-weight: bold;
+        }
+        
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            margin: 3rem 0;
+            color: var(--primary-red);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            background: rgba(198, 40, 40, 0.1);
+        }
+        
+        .back-link:hover {
+            color: var(--primary-green);
+            background: rgba(46, 125, 50, 0.1);
+        }
+        
+        .back-link i {
+            margin-right: 0.5rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .back-link:hover i {
+            transform: translateX(-5px);
+        }
+        
+        /* Footer Styles */
+        footer {
+            background: linear-gradient(135deg, var(--primary-green), var(--primary-red));
+            color: white;
+            padding: 4rem 0 2rem;
+            position: relative;
+            margin-top: 5rem;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+        
+        .footer-logo {
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .footer-logo-icon {
+            font-size: 2rem;
+            margin-right: 1rem;
+            color: var(--gold);
+        }
+        
+        .footer-logo-text h2 {
+            font-size: 1.5rem;
+            margin-bottom: 0.3rem;
+        }
+        
+        .footer-logo-text p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        .footer-about p {
+            margin: 1rem 0;
+            opacity: 0.9;
+            line-height: 1.7;
+        }
+        
+        .footer-links h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .footer-links h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background-color: var(--light-blue);
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            transform: translateX(5px);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background: white;
+            color: var(--primary-red);
+            transform: translateY(-3px);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 3rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .footer-bottom p {
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes fadeInDown {
+            from { 
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from { 
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes slideInLeft {
+            from { 
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .header-content {
+                padding: 0 1.5rem;
+            }
+            
+            .logo {
+                flex-direction: column;
+                text-align: center;
+                padding: 1.5rem;
+            }
+            
+            .logo-icon {
+                margin-right: 0;
+                margin-bottom: 1rem;
+            }
+            
+            .article-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .author {
+                margin-top: 1rem;
+            }
+            
+            .footer-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .footer-links h3:after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            
+            .social-links {
+                justify-content: center;
+            }
+            
+            .footer-logo {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="header-bg"></div>
+        <div class="header-content">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-mosque"></i>
+                </div>
+                <div class="logo-text">
+                    <h1>Theology Studies</h1>
+                    <p>Ibun Masood High School - Kibiri</p>
+                </div>
+            </div>
+            <p class="header-verse">Recite in the Name of Thy Lord</p>
+        </div>
+    </header>
+    
+    <!-- Main Content Section -->
+    <div class="main-container">
+        <section id="pleasure-of-paradise" class="animate-on-scroll">
+            <div class="article">
+                <div class="article-header">
+                    <h2>The Pleasure of Paradise</h2>
+                    <p class="author">By Sheikh Muhammad Lugoloobi</p>
+                </div>
+                
+                <p>The reality of Paradise is something which people will never be able to understand until they actually enter it, but God has shown us glimpses of it in the Quran. He has described it as a place essentially different to the life of this world, both in the very nature and purpose of life, as well as the types of delights which people will enjoy therein.</p>
+                
+                <h3>Pure delight without pain and suffering</h3>
+                <p>While people in this world experience some delight, they also face much toil and suffering. As for the life of the Hereafter, there will be neither hardship nor suffering in it, and people will live therein in pure joy and delight. All the causes of sorrow, pain and suffering which people experience in this life will be absent in the Hereafter.</p>
+                
+                <h3>Wealth</h3>
+                <p>God has promised the inhabitants of Paradise that they will have all that they imagined as far as wealth and belongings are concerned. God gives us a glimpse of this when He says:</p>
+                
+                <div class="quote arabic">
+                    "... هناك كل ما تشتهيه الأنفس وتلذ الأعين ..."
+                </div>
+                <div class="translation">
+                    "... there will be there all that the souls could desire, all that the eyes could delight in ..." (Quran 43:71)
+                </div>
+                
+                <h3>Disease and Death</h3>
+                <p>Another cause of pain and suffering in this life is the death of a loved one or disease, which are both non-existent in Paradise. None will feel any sickness or pain in Paradise. The Prophet Muhammad said about the people of Paradise:</p>
+                <div class="quote">
+                    "They will never fall ill, blow their noses or spit."
+                </div>
+                
+                <h3>Social Relationships</h3>
+                <p>As for the remorse felt due to a rift in personal relationships, people will never hear any evil or hurting comments or speech in Paradise. They will only hear good words and words of peace. God says:</p>
+                <div class="quote arabic">
+                    "لا يسمعون فيها لغوا ولا تأثيما إلا قيلا سلاما سلاما"
+                </div>
+                <div class="translation">
+                    "They will not hear therein ill speech or commission of sin. But only the saying of: Peace! Peace!" (Quran 56:25-26)
+                </div>
+            </div>
+        </section>
+
+        <section id="muslim-rules-of-life" class="animate-on-scroll">
+            <div class="article">
+                <div class="article-header">
+                    <h2>A Muslim's Rules of Life</h2>
+                    <p class="author">By Sheikh Ibrahim Nsubuga</p>
+                </div>
+                
+                <div class="values-list">
+                    <div class="value-item">
+                        <p>Start off each day with 'adhkaar al-istiyqaadh' (waking up supplications), thanking Allah for waking up in good shape.</p>
+                    </div>
+                    <div class="value-item">
+                        <p>Put God first in your life.</p>
+                    </div>
+                    <div class="value-item">
+                        <p>Broaden your horizons - learn 5 new verses from the Quran daily.</p>
+                    </div>
+                    <div class="value-item">
+                        <p>Pray Salaat Al-dhuhaa (after sunrise).</p>
+                    </div>
+                    <div class="value-item">
+                        <p>When you get angry, remember Allah, and how short and worthless life is to waste in being angry.</p>
+                    </div>
+                    <div class="value-item">
+                        <p>Remember that you can never have too many friends, but you can have few quality friends that help you fulfill the purpose of your creation.</p>
+                    </div>
+                    <div class="value-item">
+                        <p>Do something extra of goodness once in a while, like feeding a poor person, or caressing an orphan's head.</p>
+                    </div>
+                    <div class="value-item">
+                        <p>Never stop believing that you can win Allah's love and thus work for it.</p>
+                    </div>
+                    <div class="value-item">
+                        <p>Spend some time thinking of Allah's amazing creation.</p>
+                    </div>
+                    <div class="value-item">
+                        <p>Always love those who love Allah unconditionally.</p>
+                    </div>
+                    <div class="value-item">
+                        <p>Find the righteous ways to express yourself.</p>
+                    </div>
+                    <div class="value-item">
+                        <p>Every now and then, give yourself a break but always remember Allah.</p>
+                    </div>
+                    <div class="value-item">
+                        <p>Pray for blessing to come to your enemies, and pray Allah to guide them.</p>
+                    </div>
+                    <div class="value-item">
+                        <p>Hug your parents, kiss their hands and heads and always obey but stop at Allah's orders.</p>
+                    </div>
+                    <div class="value-item">
+                        <p>Smile to everyone, for your smile makes a big difference.</p>
+                    </div>
+                    <div class="value-item">
+                        <p>Forgive, forget and smile.</p>
+                    </div>
+                    <div class="value-item">
+                        <p>Tears are not for women only... tears are for all human beings with feelings remaining in them.</p>
+                    </div>
+                    <div class="value-item">
+                        <p>Read the Quran daily with understanding, not just passing your eyes through the words.</p>
+                    </div>
+                    <div class="value-item">
+                        <p>Never look down on anybody, for they may be better than you in Allah's eyes.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="six-articles-of-faith" class="animate-on-scroll">
+            <div class="article">
+                <div class="article-header">
+                    <h2>Six Articles of Faith</h2>
+                    <p class="author">By Sheikh Uthman Kayongo</p>
+                </div>
+                
+                <p>Muslim doctrine is often summarized in "Six Articles of Faith." These are the fundamental beliefs which every Muslim must ascribe to:</p>
+                
+                <h3>1. One God (Allah)</h3>
+                <p>The central belief in Islam is that there is one God. The Muslim name for God is "Allah," which is Arabic for "the (al) God (Ilah)."</p>
+                
+                <h3>2. The angels of God</h3>
+                <p>Angels in Islam are spiritual creatures that serve the purposes of Allah. They are messengers who relay communication to people and carry out other responsibilities.</p>
+                
+                <h3>3. The books of God, especially the Qur'an</h3>
+                <p>The Quran is the most important writing in Islam and is the highest authority in both religious and legal matters. Muslims believe the Quran to be an errorless record of the angel Gabriel's revelations to Muhammad.</p>
+                
+                <h3>4. The prophets of God, especially Muhammad</h3>
+                <p>Muhammad is the most important historical and theological figure in Islam. His name, which means "highly praised," reflects this.</p>
+                
+                <h3>5. The Day of Judgment (or the afterlife)</h3>
+                <p>Muslims believe in the continued existence of the soul and a transformed physical existence after death. Islam teaches that there will be a day of judgment when all humans will be divided between the eternal destinations of Paradise and Hell.</p>
+                
+                <h3>6. The supremacy of God's will (or predestination)</h3>
+                <p>Islam teaches that God not only foreknows, but also foreordains all that comes to pass in the world and in the lives of individuals.</p>
+            </div>
+        </section>
+
+        <a href="ibn.html" class="back-link">
+            <i class="fas fa-arrow-left"></i> Back to Home Page
+        </a>
+    </div>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-about">
+                <div class="footer-logo">
+                    <div class="footer-logo-icon">
+                        <i class="fas fa-school"></i>
+                    </div>
+                    <div class="footer-logo-text">
+                        <h2>Ibun Masood High School</h2>
+                        <p>Kibiri - Busaabala Road</p>
+                    </div>
+                </div>
+                <p>Providing quality education for both secular and theological studies since 1985. Our institution is committed to excellence in education, nurturing students for both academic and spiritual growth.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="ibn.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+                    <li><a href="About.html"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                    <li><a href="academics.html"><i class="fas fa-chevron-right"></i> Academics</a></li>
+                    <li><a href="Admission.html"><i class="fas fa-chevron-right"></i> Admissions</a></li>
+                    <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Contact</a></li>
+                </ul>
+            </div>
+            
+            
+            
+            <div class="footer-links">
+                <h3>Contact Info</h3>
+                <ul>
+                    <li><i class="fas fa-map-marker-alt"></i> KIBIRI - BUSAABALA ROAD</li>
+                    <li><i class="fas fa-phone-alt"></i> 0782 311 464 / 0702 311 464</li>
+                    <li><i class="fas fa-envelope"></i> info@ibunmasood.edu</li>
+                    <li><i class="fas fa-clock"></i> Mon-Fri: 7:00AM - 5:00PM</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; <script>document.write(new Date().getFullYear())</script> Ibun Masood High School. All Rights Reserved.</p>
+            <p>Recite in the Name of Thy Lord</p>
+        </div>
+    </footer>
+
+    <script>
+        // Animation on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const animateElements = document.querySelectorAll('.animate-on-scroll');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animation = 'fadeInUp 0.8s ease forwards';
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { 
+                threshold: 0.1,
+                rootMargin: '0px 0px -100px 0px'
+            });
+            
+            animateElements.forEach(element => {
+                observer.observe(element);
+            });
+        });
+    </script>
+</body>
+</html>
